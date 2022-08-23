@@ -1,4 +1,30 @@
 .headerDesign{
-    height: 100px;
+    height:10em;
+    width: 100%;
     border-bottom: 1px solid black;
+
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    background-color: rgba(255, 255, 255, 0.808);
 }
+
+.logo{
+    position: absolute;
+    top: 4em;
+    left: 5em;
+}
+
+.containerMenu{
+    
+    margin-right: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3em;
+}
+
