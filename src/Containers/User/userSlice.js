@@ -19,6 +19,7 @@ export const userSlice = createSlice({
 });
 
 export const loginUser = (body) => async (dispatch) => {
+
     try {
         //Axios request
         const user = await axios.post("https://bbdd-cv2.herokuapp.com/api/auth/login", body);

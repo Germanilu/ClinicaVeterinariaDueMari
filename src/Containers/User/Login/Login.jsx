@@ -35,15 +35,12 @@ const Login = () => {
         //Regular Expression to validate Password
         if (credentials.password.length > 5) {
             if (! /[\d()+-]/g.test(credentials.password)) { 
-                setMsgError("Introduce un password valido");
+                setMsgError("Introduci una password Valida");
                 return;
             }
-        } else {
-            setMsgError("Password minimo de 5 caracteres")
-            return
         }
 
-        // setMsgError("")
+        setMsgError("")
 
         //Dispatch credentials to loginUser(Redux)
         dispatch(loginUser({ email: credentials.email, password: credentials.password }))
@@ -68,6 +65,7 @@ const Login = () => {
                              <input type="password" name='password' title='password' onChange={updateCredentials} />
                          </div>
                          <div className="buttonLogin" onClick={() => login()}>Login</div>
+                         {msgError}
                          <div className="containerRegister">
                             <p>Non sei ancora registrato?  <span className='redirRegister' onClick={() => move('/register')}>Crea un Account</span> </p>
                          </div>

@@ -40,15 +40,15 @@
 
 .containerDataLogin > h1{
     @include flex();
-    margin-top: 2em;
+    margin-top: 1.5em;
     font-weight: 500;
     font-size: 30px
 }
 
-h3{
+.containerDataLogin > h3{
     @include flex();
     color: rgba(0, 0, 0, 0.671);
-    margin-top: 2em;
+    margin-top: 1.5em;
     margin-bottom: -2em
 }
 
@@ -84,7 +84,9 @@ input{
     padding: 0.5em 2em;
     border-radius: 1em;
     border: 1px solid black;
+    cursor: pointer;
 }
+
 
 .redirRegister{
     text-decoration: underline;
