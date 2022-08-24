@@ -18,8 +18,8 @@ export const userSlice = createSlice({
      },
 });
 
-export const loginUser = (body) => async (dispatch) => {
 
+export const loginUser = (body,setMsgError) => async (dispatch) => {
     try {
         //Axios request
         const user = await axios.post("https://bbdd-cv2.herokuapp.com/api/auth/login", body);
@@ -30,7 +30,8 @@ export const loginUser = (body) => async (dispatch) => {
             dispatch(login({...decode,token: user.data.token}));
         }
     } catch (error) {
-        console.log(error.response.data.message)
+        //Set the hook with the error
+        setMsgError(error.response.data.message)
     }
 }
 

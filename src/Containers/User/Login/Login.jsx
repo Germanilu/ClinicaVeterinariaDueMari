@@ -42,8 +42,8 @@ const Login = () => {
 
         setMsgError("")
 
-        //Dispatch credentials to loginUser(Redux)
-        dispatch(loginUser({ email: credentials.email, password: credentials.password }))
+        //Dispatch credentials to loginUser(Redux) & hook msgError
+        dispatch(loginUser({ email: credentials.email, password: credentials.password},setMsgError))
 
     }
 
