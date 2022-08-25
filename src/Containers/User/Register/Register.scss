@@ -2,7 +2,7 @@
 
 .registerDesign{
     width: 100%;
-    height: 80vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -10,9 +10,8 @@
 }
 
 .containerReg{
-    width: 55%;
+    width: 100%;
     height: 30em;
-    margin-left: 5em;
     @include flex();
     //Unable overlap border
     overflow: auto;
@@ -106,8 +105,6 @@ input{
     margin-top: -1em;
 }
 
-
-
 .containerDataWelcome{
     width: 50%;
     height: 100%;
@@ -115,5 +112,3 @@ input{
     @include flex();
     flex-direction: column;
 }
-
-

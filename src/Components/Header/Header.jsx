@@ -15,7 +15,7 @@ const Header = () => {
 
 
     //Function to navigate 
-    const Move = (i) => {
+    const move = (i) => {
         navigate(i)
     }
 
@@ -23,11 +23,11 @@ const Header = () => {
     if(!credentials?.user_role){
         return (
             <div className='headerDesign'>
-                <div className="logo" onClick={() => Move('/')}>Logo Clinica</div>
+                <div className="logo" onClick={() => move('/')}>Logo Clinica</div>
                 <div className="containerMenu">
                     <div className="headerButton">Consulto Online</div>
                     <div className="headerButton">Richiedi Appuntamento</div>
-                    <div className="headerButton" onClick={() => Move('/login')}>Accedi</div>
+                    <div className="headerButton" onClick={() => move('/login')}>Accedi</div>
                 </div>
             </div>
         )
