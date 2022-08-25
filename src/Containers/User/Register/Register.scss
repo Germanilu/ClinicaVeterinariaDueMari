@@ -103,7 +103,15 @@ input{
     border-radius: 1em;
     border: 1px solid black;
     cursor: pointer;
+    margin-top: -1em;
 }
 
 
 
+.containerDataWelcome{
+    width: 50%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    @include flex();
+    flex-direction: column;
+}

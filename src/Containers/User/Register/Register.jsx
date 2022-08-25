@@ -17,6 +17,7 @@ const Register = () => {
         password: '',
     });
     const [msgError, setMsgError] = useState()
+    const [registrado, setRegistrado] = useState('');
 
     //Var
     const navigate = useNavigate();
@@ -53,6 +54,7 @@ const Register = () => {
             const attempt = await axios.post("https://bbdd-cv2.herokuapp.com/api/auth/register", userData)
             if (attempt.status === 200) {
                 console.log("REGISTRATO CORRETTAMENTE")
+                setRegistrado(true);
                 setTimeout(() => {
                     navigate('/login')
                 }, 2000);
@@ -61,6 +63,28 @@ const Register = () => {
             setMsgError(error.response.data.message)
         }
     }
+
+    if (registrado === true) {
+
+        return (
+            <div className='registerDesign'>
+                <div className="containerReg">
+                    <div className="containerImgReg">
+                        <div className="containerImgCircleReg">
+                            <img src={require('../../../img/birdLoginNoBG.png')} alt="" className='imgRegister' />
+                        </div>
+                        <h2>Clinica Veterinaria DueMari</h2>
+                        <p>Benvenuto, registrati per usufruire dei nostri servizi</p>
+                    </div>
+                    <div className="containerDataWelcome">
+                        <h1>Hey!</h1>
+                        <h2>Benvenuto! {userData.name}</h2>
+                    </div>
+                </div>
+            </div>
+        )
+
+    }else{
         return (
             <div className='registerDesign'>
                 <div className="containerReg">
@@ -122,6 +146,8 @@ const Register = () => {
                 </div>
             </div>
         )
+    }
+        
     }
     
 
