@@ -25,8 +25,8 @@ const Login = () => {
         navigate(i)
     }
 
-    const login = () => {
 
+    const login = () => {
         //Regular expression to validate email
         if (! /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(credentials.email)) {
             setMsgError(" Introduci un'email valida ");
@@ -39,13 +39,11 @@ const Login = () => {
                 return;
             }
         }
-
         setMsgError("")
-
         //Dispatch credentials to loginUser(Redux) & hook msgError
         dispatch(loginUser({ email: credentials.email, password: credentials.password }, setMsgError))
-
     }
+
 
     return (
         <div className='loginDesign'>
