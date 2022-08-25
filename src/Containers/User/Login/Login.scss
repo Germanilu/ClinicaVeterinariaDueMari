@@ -44,30 +44,29 @@
     object-fit: contain;
 }
 
+h2{
+    font-weight: 700;
+}
+
 .containerImg > p {
     max-width: 60%;
     text-align: center;
     margin-top: -0.5em;
+    font-weight: 400;
 }
 
 .containerDataLogin{
     width: 50%;
     height: 100%;
-    background-color: rgb(255, 255, 255)
+    background-color: rgb(255, 255, 255);
 }
 
 .containerDataLogin > h1{
     @include flex();
     margin-top: 1.5em;
     font-weight: 500;
-    font-size: 30px
-}
-
-.containerDataLogin > h3{
-    @include flex();
-    color: rgba(0, 0, 0, 0.671);
-    margin-top: 1.5em;
-    margin-bottom: -2em
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .inputsContainer{
@@ -86,6 +85,7 @@
     font-size: 12px;
     color: rgba(0, 0, 0, 0.705);
     margin-bottom: -1px;
+    font-weight: 500;
 }
 
 input{
@@ -94,7 +94,7 @@ input{
     //To unable border style default & on Focus
     border: none;
     outline: none;
-    border-bottom: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0.705);
 }
 
 .buttonLogin{
@@ -109,4 +109,5 @@ input{
     text-decoration: underline;
     cursor: pointer;
 }
+
 
