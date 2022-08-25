@@ -6,25 +6,19 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    background-color: rgba(65, 218, 193, 0.137);
-    
+    background-color: rgba(65, 218, 193, 0.137); 
 }
 
 .containerLogin{
     width: 55%;
     height: 30em;
-    border: 2px solid rgb(255, 255, 255);
     margin-left: 5em;
-    // border-radius: 2em;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-
     //Unable overlap border
     overflow: auto;
-   
+    box-shadow: 10px 10px 10px 0px rgba(7, 7, 7, 0.452);
 }
 
 .containerImg{
@@ -110,7 +104,6 @@ input{
     border: 1px solid black;
     cursor: pointer;
 }
-
 
 .redirRegister{
     text-decoration: underline;

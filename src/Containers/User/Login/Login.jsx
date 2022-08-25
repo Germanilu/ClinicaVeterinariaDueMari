@@ -55,7 +55,7 @@ const Login = () => {
                         <img src={require('../../../img/birdLoginNoBG.png')} alt="" className='imgLogin' />
                     </div>
                     <h2>Clinica Veterinaria DueMari</h2>
-                        <p>Lasciate ogni speranza o voi che entrate</p>
+                        <p>Benvenuto, esegui l'accesso per usufruire i nostri servizi</p>
                 </div>
                 <div className="containerDataLogin">
                     <h1>Benvenuto!</h1>
