@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './Register.scss';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
@@ -17,11 +16,7 @@ const Register = () => {
         password2: '',
     });
     const [msgError, setMsgError] = useState()
-    const [registrado, setRegistrado] = useState('');
-
-    //Var
-    const navigate = useNavigate();
-
+    const [register, setRegister] = useState('');
 
     //Functions
     const updateUserData = (e) => {
@@ -67,7 +62,7 @@ const Register = () => {
         try {
             const attempt = await axios.post("https://bbdd-cv2.herokuapp.com/api/auth/register", userData)
             if (attempt.status === 200) {
-                setRegistrado(true);
+                setRegister(true);
                 setTimeout(() => {
                     window.location.reload()
                 }, 2000);
@@ -77,8 +72,7 @@ const Register = () => {
         }
     }
 
-    if (registrado === true) {
-
+    if (register === true) {
         return (
             <div className='registerDesign'>
                 <div className="containerReg">
@@ -91,12 +85,11 @@ const Register = () => {
                     </div>
                     <div className="containerDataWelcome">
                         <h1>Hey!</h1>
-                        <h2>Benvenuto! {userData.name}</h2>
+                        <h2>Ciao! {userData.name}</h2>
                     </div>
                 </div>
             </div>
         )
-
     } else {
         return (
             <div className='registerDesign'>
@@ -166,8 +159,5 @@ const Register = () => {
     }
 
 }
-
-
-
 
 export default Register;

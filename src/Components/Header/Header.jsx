@@ -2,8 +2,8 @@ import React from 'react';
 import './Header.scss'
 
 import {useNavigate} from 'react-router-dom';
-import {useSelector, useDispatch} from 'react-redux';
-import {userData} from '../../Containers/User/userSlice';
+import {useDispatch, useSelector} from 'react-redux';
+import {userData, logOut} from '../../Containers/User/userSlice';
 
 
 const Header = () => {
@@ -13,10 +13,14 @@ const Header = () => {
     const dispatch = useDispatch();
     const credentials = useSelector(userData);
 
-
     //Function to navigate 
     const move = (i) => {
-        navigate(i)
+        if(i === "/login"){
+            navigate(i)
+            window.location.reload();
+        }else{
+            navigate(i)
+        }
     }
 
     //Validation
@@ -34,7 +38,13 @@ const Header = () => {
     }else{
         return(
             <div className='headerDesign'>
-                Usuario Logueado
+                <div className="logo" onClick={() => move('/')}>Logo Clinica</div>
+                <div className="containerMenu">
+                    <div className="headerButton">Consulto Online</div>
+                    <div className="headerButton">Richiedi Appuntamento</div>
+                    <div className="headerButton">Profilo</div>
+                    <div className="headerButton" onClick={() => dispatch(logOut())}>Logout</div>
+                </div>
             </div>
         )
     }

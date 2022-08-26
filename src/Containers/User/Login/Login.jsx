@@ -4,6 +4,7 @@ import './Login.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, userData } from '../userSlice';
 import Register from '../Register/Register';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -14,7 +15,20 @@ const Login = () => {
 
     //Var
     const dispatch = useDispatch();
+    const navigate = useNavigate()
+    const token = useSelector(userData);
 
+    
+
+    useEffect(() => {
+        
+    },[])
+
+    useEffect(() => {
+        if(token.token !== ''){
+            navigate('/')
+        }
+    })
 
     const updateCredentials = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -66,8 +80,9 @@ const Login = () => {
                                     <p className='inputPar'>Password</p>
                                     <input type="password" name='password' title='password' onChange={updateCredentials} />
                                 </div>
-                                <div className="buttonLogin" onClick={() => login()}>Accedi</div>
                                 {msgError}
+                                <div className="buttonLogin" onClick={() => login()}>Accedi</div>
+                                
                                 <div className="containerRegister">
                                     <p>Non sei ancora registrato?  <span className='redirRegister' onClick={() => click()}>Crea un Account</span> </p>
                                 </div>
