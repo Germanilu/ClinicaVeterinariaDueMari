@@ -1,5 +1,5 @@
 .headerDesign{
-    height:19.9vh;
+    height:17.9vh;
     width: 100%;
     border-bottom: 0.1vh solid rgba(0, 0, 0, 0.164);
     box-shadow: 0px 2px 10px -1px rgba(0, 0, 0, 0.288);
@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: right;
     background-color: rgb(255, 255, 255);
+    z-index: 10;
 }
 
 .logo{
