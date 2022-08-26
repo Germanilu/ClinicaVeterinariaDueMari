@@ -1,7 +1,11 @@
 import React from 'react';
 import './Home.scss'
+
+//Import To enable reveal on scroll
+import { Slide } from "react-awesome-reveal";
 const Home = () => {
     return (
+
         <div className='homeDesign'>
             <div className="firstSection">
                 <div className="containerInfo">
@@ -11,14 +15,17 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
             <div className="secondSection">
                 <div class="containerSecondSection">
                     <div className="consultText">
-                        <h1>Il Consulto</h1>
-                        <p>
-                            Abbiamo creato questo servizio per<strong> potervi offrire delle consulenze online </strong> in una maniera per noi sostenibile. <br /> <br/>
-                            Ci auguriamo in questo modo di riuscire a fornirvi risposte e consigli riguardanti i problemi di salute dei vostri amici animali. E magari sarà anche un modo con il quale voi aiuterete noi a sostenerci. <br/><br/>
-                            Il consulto <strong> non potrà in alcun modo sostituire </strong> una visita veterinaria effettuata in presenza dell'animale. <br/><br/> Verranno forniti pareri e consigli relativi alle domande che vorrete farci e che ci auguriamo vi aiuteranno a comprendere e a gestire al meglio i problemi sanitari dei vostri amici a quattro zampe ( o con le ali, o pinne o altro).</p>
+                        <Slide>
+                            <h1>Il Consulto</h1>
+                            <p>
+                                Abbiamo creato questo servizio per<strong> potervi offrire delle consulenze online </strong> in una maniera per noi sostenibile. <br /> <br />
+                                Ci auguriamo in questo modo di riuscire a fornirvi risposte e consigli riguardanti i problemi di salute dei vostri amici animali. E magari sarà anche un modo con il quale voi aiuterete noi a sostenerci. <br /><br />
+                                Il consulto <strong> non potrà in alcun modo sostituire </strong> una visita veterinaria effettuata in presenza dell'animale. <br /><br /> Verranno forniti pareri e consigli relativi alle domande che vorrete farci e che ci auguriamo vi aiuteranno a comprendere e a gestire al meglio i problemi sanitari dei vostri amici a quattro zampe ( o con le ali, o pinne o altro).</p>
+                        </Slide>
                     </div>
 
                     <div class="cardHome">
@@ -36,11 +43,9 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
+
     )
 }
 export default Home;
