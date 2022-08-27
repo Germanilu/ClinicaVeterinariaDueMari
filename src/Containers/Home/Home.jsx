@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Home.scss'
 
 //Import To enable reveal on scroll
 import { Slide } from "react-awesome-reveal";
+
+
 const Home = () => {
+    //UseRef create a reference to the DOM element
+    const myRef = useRef();
+    //Hooks
+    const [isVisible, setIsVisible] = useState();
+
+    useEffect(() => {
+        //Every time the entry match the ref in the vieport will change the hook state and trigger the css animation
+        const observer = new IntersectionObserver((entries) => {
+            const entry = entries[0];
+            setIsVisible(entry.isIntersecting)
+        })
+        observer.observe(myRef.current)
+    }, [])
+
+
+
+
+
     return (
 
         <div className='homeDesign'>
@@ -28,16 +48,16 @@ const Home = () => {
                         </Slide>
                     </div>
 
-                    <div class="cardHome">
-                        <div class="cardHome__image-container">
-                            <img class="cardHome__image" src={require("../../img/clinica.png")} alt="" />
+                    <div className="cardHome" >
+                        <div className="cardHome__image-container">
+                            <img className={isVisible ? "cardHome__image" : "hideAnimation"} ref={myRef} src={require("../../img/clinica.png")} alt="" />
                         </div>
-                        <svg class="cardHome__svg" viewBox="0 0 800 500">
+                        <svg className="cardHome__svg" viewBox="0 0 800 500">
                             <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#92f3e3" />
-                            <path class="cardHome__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent" />
+                            <path className={isVisible ? "cardHome__line" : "hideAnimation"} ref={myRef} d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent" />
                         </svg>
-                        <div class="cardHome__content">
-                            <h1 class="cardHome__title">Consulto Online</h1>
+                        <div className={isVisible ? "cardHome__content" : "hideAnimation"} ref={myRef}>
+                            <h1 className="cardHome__title">Consulto Online</h1>
                             <p>Cosa aspetti, Contattaci e ti risponderemo nell'arco di 48h </p>
                             <div className="buttonConsult">Richiedi Consulto</div>
                         </div>
