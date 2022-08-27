@@ -110,7 +110,7 @@ img {
 
     &__title {
         color: #3A4A59;
-        margin-top: 0;
+        margin-top: -1.5em;
         font-weight: 600;
         letter-spacing: 0.02em;
     }
@@ -134,12 +134,12 @@ img {
     opacity: -1;
 }
 
-.buttonConsult {
-    border: 1px solid black;
-    width: max-content;
-    padding: 0.5em;
+.button{
+    @include button();
 }
 
+
+//Keyframe First section
 @keyframes move {
     0% {
         transform: translate(-100%);
@@ -201,3 +201,6 @@ img {
         filter: blur(0);
     }
 }
+
+
+

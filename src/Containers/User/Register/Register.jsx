@@ -148,7 +148,7 @@ const Register = () => {
                                         </div>
                                     </div>
                                     {msgError}
-                                    <div className="buttonRegister" onClick={() => userRegister()}>Registrati</div>
+                                    <button className="button" onClick={() => userRegister()}>Registrati</button>
                                 </div>
                             </div>
                         </div>
@@ -157,7 +157,6 @@ const Register = () => {
             </div>
         )
     }
-
 }
 
 export default Register;

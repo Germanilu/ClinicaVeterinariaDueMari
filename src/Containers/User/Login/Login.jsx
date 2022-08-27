@@ -81,7 +81,7 @@ const Login = () => {
                                     <input type="password" name='password' title='password' onChange={updateCredentials} />
                                 </div>
                                 {msgError}
-                                <div className="buttonLogin" onClick={() => login()}>Accedi</div>
+                                <button className="button" onClick={() => login()}>Accedi</button>
                                 
                                 <div className="containerRegister">
                                     <p>Non sei ancora registrato?  <span className='redirRegister' onClick={() => click()}>Crea un Account</span> </p>

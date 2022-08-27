@@ -3,3 +3,48 @@
     align-items: center;
     justify-content: center;
 }
+
+@mixin button{
+    position: relative;
+    padding: 0.7em 1em;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+    font-size: 18px;
+    margin: 0.5em 0.3em;
+
+    &.button::after, &.button::before{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 20%;
+        height: 20%;
+        border: 2px solid;
+        transition: all 0.6s ease;
+        border-radius: 2px;
+    }
+
+    &.button::after{
+    bottom: 0;
+      right: 0;
+      border-top-color: transparent;
+      border-left-color: transparent;
+      border-bottom-color: #3A4A59;
+      border-right-color: #3A4A59;
+    }
+
+    &.button::before{
+        top: 0;
+        left: 0;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        border-top-color: #3A4A59;
+        border-left-color: #3A4A59;
+    }
+
+    &.button:hover:after, &.button:hover:before{
+        width: 100%;
+        height: 100%;
+    }
+}

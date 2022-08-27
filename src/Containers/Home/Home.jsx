@@ -23,7 +23,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-
+            {/* Consult Section */}
             <div className="secondSection">
                 <div className="containerSecondSection">
                     <div className="consultText">
@@ -35,7 +35,6 @@ const Home = () => {
                                 Il consulto <strong> non potrà in alcun modo sostituire </strong> una visita veterinaria effettuata in presenza dell'animale. <br /><br /> Verranno forniti pareri e consigli relativi alle domande che vorrete farci e che ci auguriamo vi aiuteranno a comprendere e a gestire al meglio i problemi sanitari dei vostri amici a quattro zampe ( o con le ali, o pinne o altro).</p>
                         </Slide>
                     </div>
-
                     <div className="cardHome" >
                         <div className="cardHome__image-container">
                             <img className={isVisible ? "cardHome__image" : "hideAnimation"} ref={myRef} src={require("../../img/perro1.jpg")} alt="" />
@@ -47,12 +46,12 @@ const Home = () => {
                         <div className={isVisible ? "cardHome__content" : "hideAnimation"} ref={myRef}>
                             <h1 className="cardHome__title">Consulto Online</h1>
                             <p>Cosa aspetti, Contattaci e ti risponderemo nell'arco di 48h </p>
-                            <div className="buttonConsult">Richiedi Consulto</div>
+                            <button className="button">Richiedi Consulto</button>
                         </div>
                     </div>
                 </div>
             </div>
-
+            {/* Reserve Section */}
             <div className="secondSection">
                 <div className="containerSecondSection">
                     <div className="cardHome" >
@@ -66,7 +65,7 @@ const Home = () => {
                         <div className={isAlsoVisible ? "cardHome__content" : "hideAnimation"} ref={mySecondRef}>
                             <h1 className="cardHome__title">Prenota Visita</h1>
                             <p>Prenota una visita e potrai portare il tuo animale presso la clinica </p>
-                            <div className="buttonConsult">Prenota Visita</div>
+                            <button className="button">Prenota ora</button>
                         </div>
                     </div>
 
@@ -74,14 +73,12 @@ const Home = () => {
                         <JackInTheBox>
                             <h1>Prenota Un'Appuntamento</h1>
                             <p>
-                                Come abbiamo sottolineato sopra, il consulto non potrà in alcun modo sostituire una visita veterinaria effettuata in presenza dell'animale. Se hai bisogno di portarci il tuo animale per una visita in sede dovrai semplicemente richiedere un'appuntamento. <br /> <br /> Controlla la disponibilità e richiedi una visita privata per il tuo animale! </p>
+                                Come abbiamo sottolineato sopra, il consulto non potrà in alcun modo sostituire una visita veterinaria effettuata in presenza dell'animale. Se hai bisogno di portarci il tuo animale per una visita in sede dovrai semplicemente richiedere un'appuntamento. <br /> <br /> Controlla la disponibilità e <strong> richiedi una visita privata </strong> per il tuo animale! </p>
                         </JackInTheBox>
                     </div>
                 </div>
             </div>
-
         </div>
-
     )
 }
 export default Home;
