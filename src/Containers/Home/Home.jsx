@@ -1,31 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Home.scss'
 
-//Import To enable reveal on scroll
-import { Slide,JackInTheBox } from "react-awesome-reveal";
+//Import To animate on scroll
+import { Slide, JackInTheBox } from "react-awesome-reveal";
+//Import to Enable intersectionObserver
+import { useInView } from 'react-intersection-observer';
 
 
 const Home = () => {
-    //UseRef create a reference to the DOM element
-    const myRef = useRef();
-    //Hooks
-    const [isVisible, setIsVisible] = useState();
-
-    useEffect(() => {
-        //Every time the entry match the ref in the vieport will change the hook state and trigger the css animation
-        const observer = new IntersectionObserver((entries) => {
-            const entry = entries[0];
-            setIsVisible(entry.isIntersecting)
-        })
-        observer.observe(myRef.current)
-    }, [])
-
-
-
+    // Ref create a reference to the DOM element & UseInView trigger element when in view
+    const { ref: myRef, inView: isVisible } = useInView()
+    const { ref: mySecondRef, inView: isAlsoVisible } = useInView()
 
 
     return (
-
         <div className='homeDesign'>
             <div className="firstSection">
                 <div className="containerInfo">
@@ -37,7 +25,7 @@ const Home = () => {
             </div>
 
             <div className="secondSection">
-                <div class="containerSecondSection">
+                <div className="containerSecondSection">
                     <div className="consultText">
                         <Slide>
                             <h1>Il Consulto</h1>
@@ -54,7 +42,7 @@ const Home = () => {
                         </div>
                         <svg className="cardHome__svg" viewBox="0 0 800 500">
                             <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#92f3e3" />
-                            <path className={isVisible ? "cardHome__line" : "hideAnimation"} ref={myRef} d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent" />
+                            <path className={isVisible ? "cardHome__line" : "hideAnimation"} ref={myRef} d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" strokeWidth={10} fill="transparent" />
                         </svg>
                         <div className={isVisible ? "cardHome__content" : "hideAnimation"} ref={myRef}>
                             <h1 className="cardHome__title">Consulto Online</h1>
@@ -65,17 +53,17 @@ const Home = () => {
                 </div>
             </div>
 
-        <div className="thirdSection">
-            <div className="containerThirdSection">
-            <div className="cardHome" >
+            <div className="secondSection">
+                <div className="containerSecondSection">
+                    <div className="cardHome" >
                         <div className="cardHome__image-container">
-                            <img className="cardHome__image" src={require("../../img/clinica.png")} alt="" />
+                            <img className={isAlsoVisible ? "cardHome__image" : "hideAnimation"} ref={mySecondRef} src={require("../../img/clinica.png")} alt="" />
                         </div>
                         <svg className="cardHome__svg" viewBox="0 0 800 500">
                             <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#92f3e3" />
-                            <path className="cardHome__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent" />
+                            <path className={isAlsoVisible ? "cardHome__line" : "hideAnimation"} ref={mySecondRef} d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" strokeWidth={10} fill="transparent" />
                         </svg>
-                        <div className="cardHome__content">
+                        <div className={isAlsoVisible ? "cardHome__content" : "hideAnimation"} ref={mySecondRef}>
                             <h1 className="cardHome__title">Prenota Visita</h1>
                             <p>Prenota una visita e potrai portare il tuo animale presso la clinica </p>
                             <div className="buttonConsult">Prenota Visita</div>
@@ -86,11 +74,11 @@ const Home = () => {
                         <JackInTheBox>
                             <h1>Prenota Un'Appuntamento</h1>
                             <p>
-                                Come abbiamo sottolineato sopra, il consulto non potrà in alcun modo sostituire una visita veterinaria effettuata in presenza dell'animale. Se hai bisogno di portarci il tuo animale per una visita in sede dovrai semplicemente richiedere un'appuntamento. <br/> <br/> Controlla la disponibilità e richiedi una visita privata per il tuo animale! </p>
+                                Come abbiamo sottolineato sopra, il consulto non potrà in alcun modo sostituire una visita veterinaria effettuata in presenza dell'animale. Se hai bisogno di portarci il tuo animale per una visita in sede dovrai semplicemente richiedere un'appuntamento. <br /> <br /> Controlla la disponibilità e richiedi una visita privata per il tuo animale! </p>
                         </JackInTheBox>
                     </div>
+                </div>
             </div>
-        </div>
 
         </div>
 
