@@ -1,0 +1,43 @@
+
+.buttonToTop{
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    background-color: #3A4A59;
+    border: none;
+    border-radius: 50%;
+    transition: 200ms;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+}
+
+.buttonToTop> svg {
+    fill: #5fe9d2;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.buttonToTop:hover {
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    width: 65px;
+    height: 65px;
+}
+
+.buttonToTop:hover svg {
+        animation: bounce 2s infinite linear;
+}
+
+@keyframes bounce {
+    0% {transform: translateX(-50%) translateY(-50%)}
+    25% {transform: translateX(-50%) translateY(-65%)}
+    50% {transform: translateX(-50%) translateY(-50%)}
+    75% {transform: translateX(-50%) translateY(-35%)}
+    100% {transform: translateX(-50%) translateY(-50%)}
+}
+
+.buttonToTop:focus {
+    outline: none;
+}

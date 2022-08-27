@@ -5,13 +5,13 @@ import './Home.scss'
 import { Slide, JackInTheBox } from "react-awesome-reveal";
 //Import to Enable intersectionObserver
 import { useInView } from 'react-intersection-observer';
+import BackToTop from '../../Components/BackToTop/BackToTop';
 
 
 const Home = () => {
     // Ref create a reference to the DOM element & UseInView trigger element when in view
     const { ref: myRef, inView: isVisible } = useInView()
     const { ref: mySecondRef, inView: isAlsoVisible } = useInView()
-
 
     return (
         <div className='homeDesign'>
@@ -78,7 +78,9 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            <BackToTop/>
         </div>
+
     )
 }
 export default Home;
