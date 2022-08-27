@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Home.scss'
 
 //Import To enable reveal on scroll
-import { Slide } from "react-awesome-reveal";
+import { Slide,JackInTheBox } from "react-awesome-reveal";
 
 
 const Home = () => {
@@ -50,7 +50,7 @@ const Home = () => {
 
                     <div className="cardHome" >
                         <div className="cardHome__image-container">
-                            <img className={isVisible ? "cardHome__image" : "hideAnimation"} ref={myRef} src={require("../../img/clinica.png")} alt="" />
+                            <img className={isVisible ? "cardHome__image" : "hideAnimation"} ref={myRef} src={require("../../img/perro1.jpg")} alt="" />
                         </div>
                         <svg className="cardHome__svg" viewBox="0 0 800 500">
                             <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#92f3e3" />
@@ -64,6 +64,34 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+
+        <div className="thirdSection">
+            <div className="containerThirdSection">
+            <div className="cardHome" >
+                        <div className="cardHome__image-container">
+                            <img className="cardHome__image" src={require("../../img/clinica.png")} alt="" />
+                        </div>
+                        <svg className="cardHome__svg" viewBox="0 0 800 500">
+                            <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#92f3e3" />
+                            <path className="cardHome__line" d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" stroke-width="3" fill="transparent" />
+                        </svg>
+                        <div className="cardHome__content">
+                            <h1 className="cardHome__title">Prenota Visita</h1>
+                            <p>Prenota una visita e potrai portare il tuo animale presso la clinica </p>
+                            <div className="buttonConsult">Prenota Visita</div>
+                        </div>
+                    </div>
+
+                    <div className="consultText">
+                        <JackInTheBox>
+                            <h1>Prenota Un'Appuntamento</h1>
+                            <p>
+                                Come abbiamo sottolineato sopra, il consulto non potrà in alcun modo sostituire una visita veterinaria effettuata in presenza dell'animale. Se hai bisogno di portarci il tuo animale per una visita in sede dovrai semplicemente richiedere un'appuntamento. <br/> <br/> Controlla la disponibilità e richiedi una visita privata per il tuo animale! </p>
+                        </JackInTheBox>
+                    </div>
+            </div>
+        </div>
+
         </div>
 
     )
