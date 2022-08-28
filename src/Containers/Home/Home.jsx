@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Home.scss'
-
+import { useNavigate } from 'react-router-dom';
 //Import To animate on scroll
 import { Slide, JackInTheBox } from "react-awesome-reveal";
 //Import to Enable intersectionObserver
@@ -12,6 +12,9 @@ const Home = () => {
     // Ref create a reference to the DOM element & UseInView trigger element when in view
     const { ref: myRef, inView: isVisible } = useInView()
     const { ref: mySecondRef, inView: isAlsoVisible } = useInView()
+
+    //var
+    const navigate = useNavigate()
 
     return (
         <div className='homeDesign'>
@@ -46,7 +49,7 @@ const Home = () => {
                         <div className={isVisible ? "cardHome__content" : "hideAnimation"} ref={myRef}>
                             <h1 className="cardHome__title">Consulto Online</h1>
                             <p>Cosa aspetti, Contattaci e ti risponderemo nell'arco di 48h </p>
-                            <button className="button">Richiedi Consulto</button>
+                            <button className="button" onClick={() => navigate('/consult')}>Richiedi Consulto</button>
                         </div>
                     </div>
                 </div>
