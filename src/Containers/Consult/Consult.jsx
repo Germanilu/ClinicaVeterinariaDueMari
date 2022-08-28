@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Consult.scss'
 import { userData } from '../../Containers/User/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -14,7 +14,8 @@ const Consult = () => {
 
     //hooks
     const [pets, setPets] = useState([])
-
+    const [message,SetMessage] = useState({petId: '', userMessage: ''})
+    const [msgError,setMsgError] = useState()
 
     useEffect(() => {
         verifyPet()
@@ -22,11 +23,12 @@ const Consult = () => {
 
 
     useEffect(() => {
-        // if (credentials.token === '') {
-        //     navigate('/login')
-        // }
+        if (credentials.token === '') {
+            navigate('/login')
+        }
     })
 
+    //Check if user have pet register, otherwise will redirect to /registerPet
     const verifyPet = async () => {
         try {
 
@@ -46,25 +48,58 @@ const Consult = () => {
         }
     }
 
+    //Function to update the message of the consult
+    const updateMessage = (e) => {
+        SetMessage({ ...message, [e.target.name]: e.target.value})
+    }
+
+    //Post new consult
+    const createConsult = async() => {
+        try {
+            let config = {
+                headers: { Authorization: `Bearer ${credentials.token}` }
+            };
+            //message get the petid selected and the userMessage inside the box and make the request
+            const attempt = await axios.post("https://bbdd-cv2.herokuapp.com/api/newConsult", message, config)
+            if(attempt.status === 200){
+                setMsgError("Consulta Inviata con Successo! Ti risponderemo entro 48h")
+            }
+        } catch (error) {
+            if(message.petId == "default"){
+                setMsgError("Devi selezionare un'animale");
+                setTimeout(() => {
+                    setMsgError("")
+                }, 5000);
+            }else if(message.userMessage == ""){
+                setMsgError("Il messagio è vuoto, Scrivi qualcosa");
+                setTimeout(() => {
+                    setMsgError("")
+                }, 5000);
+            }
+            console.log(error)
+        }
+    }
+
     return (
         <div className='consultDesign'>
             <div className="consultText">Scrivi la tua consulta, entro 48h ti risponderemo!</div>
             <div className="containerConsult">
 
                 <div className="boxContainerConsultData">
-                    {/* Mapping result from axios inside select input */}
-                    <select name="Pets" className='selectPet'>
-                        <option value="default">--</option>
+                    {/* Mapping result of pets from axios inside the dropdown menu */}
+                    <select name="petId" className='selectPet' onChange={updateMessage}> 
+                        <option name='default' value="default">--</option>
                         {pets.map(element => (
-                            <option key={element.id} value={element.id}>{element.name}</option>
+                            <option key={element.id}  value={element._id} >{element.name}</option>
                         ))}
                     </select>
                     <div className="containerDataPet">IMG and Data after selection</div>
                 </div>
 
                 <div className="boxContainerConsult">
-                    <textarea name="message" className='inputConsult' placeholder="Scrivi qui... "></textarea>
-                    <div className="button buttonConsult">Invia Consulta</div>
+                    <textarea name="userMessage" className='inputConsult' placeholder="Scrivi qui... " onChange={updateMessage}></textarea>
+                    {msgError}
+                    <div className="button buttonConsult" onClick={()=> createConsult()}>Invia Consulta</div>
 
                 </div>
 
