@@ -20,9 +20,9 @@ const Consult = () => {
 
 
     useEffect(() => {
-        if (credentials.token === '') {
-            navigate('/login')
-        }
+        // if (credentials.token === '') {
+        //     navigate('/login')
+        // }
     })
 
     const verifyPet = async () => {
@@ -49,7 +49,21 @@ const Consult = () => {
 
 
     return (
-        <div className='consultDesign'>Consulta online</div>
+        <div className='consultDesign'>
+            <div className="consultText">Scrivi la tua consulta, entro 48h ti risponderemo!</div>
+            <div className="containerConsult">
+                <div className="boxContainerConsultData">
+                    <div className="containerSelectPet">Seleziona animale</div>
+                    <div className="containerDataPet">IMG and Data after selection</div>
+                </div>
+                <div className="boxContainerConsult">
+                    <input type="text" name="message" id="message" className='inputConsult' placeholder='Scrivi Qui'/>
+                    <div className="button buttonConsult">Invia Consulta</div>
+                    
+                </div>
+                
+            </div>
+        </div>
     )
 }
 export default Consult;
