@@ -27,7 +27,7 @@ const Header = () => {
     if(!credentials?.user_role){
         return (
             <div className='headerDesign'>
-                <div className="logo" onClick={() => move('/')}>Logo Clinica</div>
+                <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>
                 <div className="containerMenu">
                     <div className="headerButton">Consulto Online</div>
                     <div className="headerButton">Richiedi Appuntamento</div>

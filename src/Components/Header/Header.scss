@@ -7,18 +7,10 @@
     top: 0;
     display: flex;
     align-items: center;
-    justify-content: right;
+    justify-content: space-around;
     background-color: rgb(255, 255, 255);
     z-index: 10;
 }
-
-// .logo{
-//     position: absolute;
-//     top: 4em;
-//     left: 5em;
-//     cursor: pointer;
-//     color: #3A4A59;
-// }
 
 .containerMenu{
     margin-right: 3em;
