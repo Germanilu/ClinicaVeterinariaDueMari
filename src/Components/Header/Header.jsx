@@ -29,8 +29,8 @@ const Header = () => {
             <div className='headerDesign'>
                 <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>
                 <div className="containerMenu">
-                    <div className="headerButton">Consulto Online</div>
-                    <div className="headerButton">Richiedi Appuntamento</div>
+                    <div className="headerButton" onClick={() => move('/consult')}>Consulto Online</div>
+                    <div className="headerButton" onClick={() => move('/reserve')}>Richiedi Appuntamento</div>
                     <div className="headerButton" onClick={() => move('/login')}>Accedi</div>
                 </div>
             </div>
@@ -40,8 +40,8 @@ const Header = () => {
             <div className='headerDesign'>
                 <div className="logo" onClick={() => move('/')}>Logo Clinica</div>
                 <div className="containerMenu">
-                    <div className="headerButton">Consulto Online</div>
-                    <div className="headerButton">Richiedi Appuntamento</div>
+                    <div className="headerButton" onClick={() => move('/consult')}>Consulto Online</div>
+                    <div className="headerButton" onClick={() => move('/reserve')}>Richiedi Appuntamento</div>
                     <div className="headerButton">Profilo</div>
                     <div className="headerButton" onClick={() => dispatch(logOut())}>Logout</div>
                 </div>
