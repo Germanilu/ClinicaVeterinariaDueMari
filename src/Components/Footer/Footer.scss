@@ -20,6 +20,11 @@ align-items: center;
 justify-content: space-around;
 }
 
+.logo{
+    width: 45%;
+    height: 100%;
+}
+
 .wrapper {
 display: inline-flex;
 list-style: none;
@@ -88,10 +93,10 @@ background: #1877F2;
 color: #ffffff;
 }
 
-.wrapper .twitter:hover,
-.wrapper .twitter:hover .tooltip,
-.wrapper .twitter:hover .tooltip::before {
-background: #1DA1F2;
+.wrapper .onlus:hover,
+.wrapper .onlus:hover .tooltip,
+.wrapper .onlus:hover .tooltip::before {
+background: #db94c6;
 color: #ffffff;
 }
 
