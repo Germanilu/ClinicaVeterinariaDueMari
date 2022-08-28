@@ -7,6 +7,7 @@ import Login from './Containers/User/Login/Login'
 import Register from './Containers/User/Register/Register';
 import Consult from './Containers/Consult/Consult';
 import Reserve from './Containers/Reserve/Reserve';
+import RegisterPet from './Containers/RegisterPet/RegisterPet';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path= '/register' element= {<Register/>}/>
       <Route path= '/consult' element= {<Consult/>}/>
       <Route path= '/reserve' element= {<Reserve/>}/>
+      <Route path= '/registerPet' element= {<RegisterPet/>}/>
     </Routes>
     <Footer/>
     </BrowserRouter>
