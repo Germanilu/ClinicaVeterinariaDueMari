@@ -34,9 +34,9 @@ const Consult = () => {
 
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myPets", config)
             if (attempt.status === 200 ) {
-                console.log(attempt.data.data)
+               
                 if(attempt.data.data.length === 0){
-                    console.log("No tienes animales")
+                    
                     navigate('/registerPet')
                 }
             }

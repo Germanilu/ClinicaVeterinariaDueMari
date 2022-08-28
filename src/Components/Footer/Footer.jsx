@@ -21,24 +21,24 @@ const Footer = () => {
         <div className='footerDesign'>
             <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>
             <div className="socialContainer">
-                <ul class="wrapper">
+                <ul className="wrapper">
                     <a href="https://www.facebook.com/clinica.duemari/">
-                        <li class="icon facebook">
+                        <li className="icon facebook">
 
-                            <span class="tooltip">Facebook</span>
-                            <span><i class="fab fa-facebook-f"><Fb /></i></span>
+                            <span className="tooltip">Facebook</span>
+                            <span><i className="fab fa-facebook-f"><Fb /></i></span>
                         </li>
                     </a>
                     <a href="http://www.effettopallaonlus.it/">
-                        <li class="icon onlus">
-                            <span class="tooltip">Onlus</span>
-                            <span><i class="fab fa-onlus"><Palla /></i></span>
+                        <li className="icon onlus">
+                            <span className="tooltip">Onlus</span>
+                            <span><i className="fab fa-onlus"><Palla /></i></span>
                         </li>
                     </a>
                     <a href="https://www.youtube.com/channel/UCFOQ9UPNZvWb_fibjl19s3A">
-                        <li class="icon youtube">
-                            <span class="tooltip">Youtube</span>
-                            <span><i class="fab fa-youtube"><Yt /></i></span>
+                        <li className="icon youtube">
+                            <span className="tooltip">Youtube</span>
+                            <span><i className="fab fa-youtube"><Yt /></i></span>
                         </li>
                     </a>
                 </ul>
