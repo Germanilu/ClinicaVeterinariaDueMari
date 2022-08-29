@@ -43,7 +43,7 @@ const Header = () => {
                 <div className="containerMenu">
                     <div className="headerButton" onClick={() => move('/consult')}>Consulto Online</div>
                     <div className="headerButton" onClick={() => move('/reserve')}>Richiedi Appuntamento</div>
-                    <div className="headerButton">Profilo</div>
+                    <div className="headerButton" onClick={() => move('/profile')}>Profilo</div>
                     <div className="headerButton" onClick={() => dispatch(logOut())}>Logout</div>
                 </div>
             </div>

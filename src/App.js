@@ -8,6 +8,7 @@ import Register from './Containers/User/Register/Register';
 import Consult from './Containers/Consult/Consult';
 import Reserve from './Containers/Reserve/Reserve';
 import RegisterPet from './Containers/RegisterPet/RegisterPet';
+import Profile from './Containers/User/Profile/Profile';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route path= '/' element= {<Home/>}/>
       <Route path= '/login' element= {<Login/>}/>
       <Route path= '/register' element= {<Register/>}/>
+      <Route path= '/profile' element= {<Profile/>}/>
       <Route path= '/consult' element= {<Consult/>}/>
       <Route path= '/reserve' element= {<Reserve/>}/>
       <Route path= '/registerPet' element= {<RegisterPet/>}/>
