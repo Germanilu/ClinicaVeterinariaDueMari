@@ -68,7 +68,7 @@ const Home = () => {
                         <div className={isAlsoVisible ? "cardHome__content" : "hideAnimation"} ref={mySecondRef}>
                             <h1 className="cardHome__title">Prenota Visita</h1>
                             <p>Prenota una visita e potrai portare il tuo animale presso la clinica </p>
-                            <button className="button">Prenota ora</button>
+                            <button className="button" onClick={() => navigate('/reserve')} >Prenota ora</button>
                         </div>
                     </div>
 
