@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import './Profile.scss'
-import { userData } from '../../User/userSlice';
+import './MyProfile.scss'
+import { userData } from '../../userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState }  from 'react';
 import './Header.scss'
+import MenuProfile from '../MenuProfile/MenuProfile';
 
 import {useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
@@ -12,6 +13,9 @@ const Header = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch();
     const credentials = useSelector(userData);
+
+    //Hooks
+    const [show,setShow] = useState(false)
     
 
     //Function to navigate 
@@ -43,9 +47,10 @@ const Header = () => {
                 <div className="containerMenu">
                     <div className="headerButton" onClick={() => move('/consult')}>Consulto Online</div>
                     <div className="headerButton" onClick={() => move('/reserve')}>Richiedi Appuntamento</div>
-                    <div className="headerButton" onClick={() => move('/profile')}>Profilo</div>
+                    <div className="headerButton" onClick={() => setShow(!show)}>Profilo</div>
                     <div className="headerButton" onClick={() => dispatch(logOut())}>Logout</div>
                 </div>
+                {show? <MenuProfile setShow={setShow} show={show}/>: null}
             </div>
         )
     }
