@@ -1,0 +1,40 @@
+.profileDesign{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5em;
+}
+
+.profileContainer{
+    border: 1px solid black;
+    min-width: 20%;
+    max-width: max-content;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.userInfo{
+    padding: 0em 1em;
+}
+
+.containerButtonProfile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+.buttonProfile{
+    font-size: 14px;
+    padding: 0.5em;
+}
+
+.petContainer{
+    border: 1px solid black;
+    width: 50%;
+    height: 70%;
+}
+
