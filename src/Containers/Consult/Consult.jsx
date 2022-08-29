@@ -16,10 +16,13 @@ const Consult = () => {
     const [pets, setPets] = useState([])
     const [message,SetMessage] = useState({petId: '', userMessage: ''})
     const [msgError,setMsgError] = useState()
+    const [infoChoosenPet, setInfoChoosenPet] = useState()
 
+    //Trigger verifyPet and detect when message.petId change to be able to display pet data on box
     useEffect(() => {
         verifyPet()
-    }, [])
+        dataPet()
+    }, [message.petId])
 
 
     useEffect(() => {
@@ -80,6 +83,21 @@ const Consult = () => {
         }
     }
 
+    const dataPet = async() => {
+        try {
+            let config = {
+                headers: { Authorization: `Bearer ${credentials.token}` }
+            };
+
+            const attempt = await axios.get(`https://bbdd-cv2.herokuapp.com/api/pets${message.petId}`,config)
+            console.log(attempt)
+            setInfoChoosenPet(attempt.data.data)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     return (
         <div className='consultDesign'>
             <div className="consultText">Scrivi la tua consulta, entro 48h ti risponderemo!</div>
@@ -88,12 +106,23 @@ const Consult = () => {
                 <div className="boxContainerConsultData">
                     {/* Mapping result of pets from axios inside the dropdown menu */}
                     <select name="petId" className='selectPet' onChange={updateMessage}> 
-                        <option name='default' value="default">--</option>
+                        <option name='default' value="default">Seleziona un'Animale</option>
                         {pets.map(element => (
                             <option key={element.id}  value={element._id} >{element.name}</option>
                         ))}
                     </select>
-                    <div className="containerDataPet">IMG and Data after selection</div>
+                    <div className="containerDataPet">
+                        {infoChoosenPet !== undefined && 
+                        <div>
+                            <p>Nome: {infoChoosenPet.name}</p>
+                            <p>Specie: {infoChoosenPet.type}</p>   
+                            <p>Razza: {infoChoosenPet.breed}</p>   
+                            <p>Età: {infoChoosenPet.age}</p>   
+                            <p>Peso: {infoChoosenPet.weight} KG</p>   
+                        </div>
+                        }
+
+                    </div>
                 </div>
 
                 <div className="boxContainerConsult">
