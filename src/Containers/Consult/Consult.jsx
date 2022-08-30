@@ -45,6 +45,7 @@ const Consult = () => {
                     navigate('/registerPet')
                 }
                 setPets(attempt.data.data)
+                console.log(pets)
             }
         } catch (error) {
             console.log(error)
@@ -54,6 +55,7 @@ const Consult = () => {
     //Function to update the message of the consult
     const updateMessage = (e) => {
         SetMessage({ ...message, [e.target.name]: e.target.value})
+        console.log(message)
     }
 
     //Post new consult
