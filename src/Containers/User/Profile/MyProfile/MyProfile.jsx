@@ -66,7 +66,7 @@ const Profile = () => {
                 <h1>I Miei Animali</h1>
                 <div className="petResult">
                 {pets.map(element => (
-                    <div className="containerPet">{element.name}</div>
+                    <div className="containerPet" key={element._id}>{element.name}</div>
                 ))}
                 </div>
                 
