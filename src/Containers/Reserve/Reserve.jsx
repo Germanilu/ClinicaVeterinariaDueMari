@@ -7,6 +7,9 @@ import { userData } from '../../Containers/User/userSlice';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
+import moment from 'moment'
+
+
 
 
 const Reserve = () => {
@@ -15,8 +18,11 @@ const Reserve = () => {
     const credentials = useSelector(userData);
     //Hooks
     const [date, onChange] = useState(new Date());
+
     const [hour, setHour] = useState()
     const [msgError, setMsgError] = useState();
+
+    console.log(date)
 
     const reserve = async () => {
         try {
@@ -25,6 +31,8 @@ const Reserve = () => {
             };
 
             //.toDateString transformy date + time into date only, and avoid issue with date select to post request with previous da
+
+            
             let body = {
                 date: date.toDateString(),
                 hour: hour
@@ -58,7 +66,8 @@ const Reserve = () => {
             <div className="containerCalendar">
                 <div className="calendar">
                     <h1>Seleziona una data</h1>
-                    <Calendar onChange={onChange} value={date} locale="it-IT" />
+                    <Calendar onChange={onChange} value={date} locale="it"/>
+                  
                 </div>
                 <div className="containerHour">
                     <h1>Seleziona un orario</h1>
