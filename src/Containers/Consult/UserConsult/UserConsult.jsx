@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './Consult.scss'
-import { userData } from '../../Containers/User/userSlice';
+import './UserConsult.scss'
+import { userData } from '../../User/userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const Consult = () => {
+const UserConsult = () => {
 
     //Var
     const credentials = useSelector(userData);
@@ -139,4 +139,4 @@ const Consult = () => {
         </div>
     )
 }
-export default Consult;
+export default UserConsult;

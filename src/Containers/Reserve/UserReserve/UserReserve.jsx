@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import './Reserve.scss'
+import './UserReserve.scss'
 
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import { userData } from '../../Containers/User/userSlice';
+import { userData } from '../../User/userSlice';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 
-import moment from 'moment'
 
 
 
 
-const Reserve = () => {
+
+const UserReserve = () => {
 
     //Var
     const credentials = useSelector(userData);
@@ -101,4 +101,4 @@ const Reserve = () => {
     )
 }
 
-export default Reserve;
+export default UserReserve;

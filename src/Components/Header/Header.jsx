@@ -45,8 +45,8 @@ const Header = () => {
             <div className='headerDesign'>
                 <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>
                 <div className="containerMenu">
-                    <div className="headerButton" onClick={() => move('/consult')}>Consulte</div>
-                    <div className="headerButton" onClick={() => move('/reserve')}>Appuntamenti</div>
+                    <div className="headerButton" onClick={() => move('/vetConsult')}>Consulte</div>
+                    <div className="headerButton" onClick={() => move('/vetReserve')}>Appuntamenti</div>
                     <div className="headerButton" onClick={() => dispatch(logOut())}>Logout</div>
                 </div>
             </div>
