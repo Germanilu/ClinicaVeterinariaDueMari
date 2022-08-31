@@ -22,17 +22,15 @@ const Reserve = () => {
     const [hour, setHour] = useState()
     const [msgError, setMsgError] = useState();
 
-    console.log(date)
-
+    
     const reserve = async () => {
+
         try {
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
 
             //.toDateString transformy date + time into date only, and avoid issue with date select to post request with previous da
-
-            
             let body = {
                 date: date.toDateString(),
                 hour: hour
@@ -40,7 +38,7 @@ const Reserve = () => {
 
             console.log(body)
 
-            if(hour === "default"){
+            if (hour === "default") {
 
                 setMsgError("Devi selezionare un'orario")
                 return;
@@ -66,8 +64,8 @@ const Reserve = () => {
             <div className="containerCalendar">
                 <div className="calendar">
                     <h1>Seleziona una data</h1>
-                    <Calendar onChange={onChange} value={date} locale="it"/>
-                  
+                    <Calendar onChange={onChange} value={date} locale="it" />
+
                 </div>
                 <div className="containerHour">
                     <h1>Seleziona un orario</h1>

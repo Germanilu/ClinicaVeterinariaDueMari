@@ -14,6 +14,7 @@ const MyConsult = () => {
     //Hooks
     const [allConsult, setAllConsult] = useState([])
     const [show, setShow] = useState()
+    const [msg,setMsg] = useState()
 
     useEffect(() => {
         consult()
@@ -35,8 +36,10 @@ const MyConsult = () => {
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myConsult", config)
             console.log(attempt)
             setAllConsult(attempt.data.data)
+            setMsg("Ecco tutte le tue consulte")
 
         } catch (error) {
+            setMsg("Sembra che tu non abbia ancora richiesto nessun consulto Online")
             console.log(error)
         }
     }
@@ -51,7 +54,7 @@ const MyConsult = () => {
             <div className="myConsultContainer">
                 {allConsult.length === 0 && (
                     <p>
-                        Al momento non hai ancora richiesto nessun consulto Online, Vuoi richiedere un consulto? <span onClick={() => navigate('/consult')}>Clicca qui!</span>
+                        {msg} Vuoi richiedere un consulto? <span onClick={() => navigate('/consult')}>Clicca qui!</span>
                     </p>
                 )}
                 {allConsult.length > 0 && (
