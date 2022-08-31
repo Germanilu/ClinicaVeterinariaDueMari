@@ -15,7 +15,7 @@
     border: 1px solid black;
 }
 
-.unreplyConsultBox{
+.consultBox{
     width: 100%;
     height: 10%;
     display: flex;
@@ -26,7 +26,18 @@
     gap: 1em;
 }
 
-.showUnreplyConsultBox{
+.consultBoxHeader{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
+.buttonConsult{
+    padding: 0.1em;
+}
+
+.showConsultBox{
     display: block;
     width: 100%;
     height: 100%;
@@ -37,16 +48,25 @@
     flex-direction: column;
 }
 
-.hideUnreplyConsultBox{
+.hideConsultBox{
     display: none;
    
 }
 
-.containerUnreplyConsultText{
+.containerConsultText{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
    border-top: 0.5px solid black;
     
+}
+
+.containerConsultReply{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-top: 0.5px solid black;
 }
