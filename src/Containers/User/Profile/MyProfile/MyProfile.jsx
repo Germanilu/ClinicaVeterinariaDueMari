@@ -17,6 +17,8 @@ const Profile = () => {
     const [pets,setPets] = useState([])
     const [msgError,setMsgError] = useState()
 
+    console.log(pets)
+
     const [userProfile, setUserProfile] = useState({
         user_name: credentials.user_name,
         user_surname: credentials.user_surname,

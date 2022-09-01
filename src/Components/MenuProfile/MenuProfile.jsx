@@ -14,6 +14,7 @@ const MenuProfile = ({show,setShow}) => {
     }
      return (
          <div className='menuProfileDesign'>
+            <div className="button" onClick={() => move('/registerPet')}>Nuovo Animale</div>
             <div className="button" onClick={() => move('/myReserve')}>Appuntamenti</div>
             <div className="button" onClick={() => move('/myConsult')}>I miei consulti</div>
             <div className="button" onClick={() => move('/myProfile')}>Il mio Profilo</div>
