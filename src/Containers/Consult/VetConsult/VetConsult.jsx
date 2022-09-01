@@ -117,6 +117,7 @@ const VetConsult = () => {
                         <div className="consultBox" key={element._id} >
                             <div className="consultBoxHeader">
                                 <p><strong>Data Consulto Online: </strong>  {element.date}</p>
+                                <p><strong>Nome Utente: </strong>  {element.userName} {element.userSurname}</p>
                                 <div className="button " onClick={() => isClick(element._id)}>Dettaglio</div>
                                 
                             </div>
@@ -136,12 +137,14 @@ const VetConsult = () => {
                     )
                 })}
             </div>
+            <h1>Storico Consulti</h1>
             <div className="replyConsultContainer">
                 {replyConsult.map((element) => {
                     return (
                         <div className="consultBox" key={element._id} >
                             <div className="consultBoxHeader">
                                 <p><strong>Data Consulto Online: </strong>  {element.date}</p>
+                                <p><strong>Nome Utente: </strong>  {element.userName} {element.userSurname}</p>
                                 <div className="button" onClick={() => isClick(element._id)}>Dettaglio</div>
 
                             </div>
