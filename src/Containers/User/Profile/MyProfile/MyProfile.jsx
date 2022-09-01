@@ -11,15 +11,13 @@ const Profile = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-
-
     //hooks
     const [pets, setPets] = useState([])
     const [msgError, setMsgError] = useState()
     const [petData,setPetData] = useState([])
     console.log(petData)
 
-
+    //To update userProfile with redux
     const [userProfile, setUserProfile] = useState({
         user_name: credentials.user_name,
         user_surname: credentials.user_surname,
@@ -32,9 +30,7 @@ const Profile = () => {
         user_password: ""
     })
 
-
     useEffect(() => {
-
         myPet()
     }, [])
 
@@ -45,6 +41,7 @@ const Profile = () => {
         }
     })
 
+    //Retrive all pets by user ID
     const myPet = async () => {
         try {
             let config = {
@@ -64,13 +61,12 @@ const Profile = () => {
         setUserProfile({ ...userProfile, [e.target.name]: e.target.value })
     }
 
+    //To set the hook for the Pet
     const handlerPetInputs = (e) => {
         setPetData({ ...petData, [e.target.name]: e.target.value })
     }
 
-
-
-
+    //Function that dispatch userData to redux 
     const editDetails = () => {
         if (userProfile.user_password == "") {
             setMsgError("Devi inserire la password");
@@ -87,7 +83,7 @@ const Profile = () => {
         }
     }
 
-
+    //Function to edit pet data
     const editPetData = async(id) => {
         try {
             let config = {
@@ -101,12 +97,24 @@ const Profile = () => {
         }
     }
 
+    //Function to delete pet
+    const deletePet = async(id) => {
+        try {
+            let config = {
+                headers: { Authorization: `Bearer ${credentials.token}` }
+            };
 
-
+            const attempt = await axios.delete(`https://bbdd-cv2.herokuapp.com/api/pet${id}`, config)
+            console.log(attempt)
+            
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div className='profileDesign'>
-
+            {/* User Profile */}
             <div className="profileContainer">
                 <h1>Il mio Profilo</h1>
                 <div className="userInfo">
@@ -119,17 +127,15 @@ const Profile = () => {
                     <p>Password</p>
                     <input type="password" name='user_password' title='password' value={userProfile.user_password} onChange={handlerInputs} />
                     <input type="password" name='user_password2' title='password' value={userProfile.user_password2} onChange={handlerInputs} />
-
-
-
-
                 </div>
+
                 <div className="containerButtonProfile">
                     {msgError}
                     <div className="button buttonProfile" onClick={() => editDetails()}>Aggiorna Dati</div>
                 </div>
             </div>
 
+            {/* Pet Profile */}
             <div className="profilePetContainer">
                 <h1>I Miei Animali</h1>
                 <div className="petResult">
@@ -145,25 +151,22 @@ const Profile = () => {
                                 <input className='inputPet' type="text" name='pet_deseases' title='deseases' value={element.diseases} />
                             </div>
 
+                            {/* Container to change Pet information */}
                             <div className="actualProfilePet">
-
                                 <input className='inputPet' type="text" name='weight' title='weight' placeholder='Aggiorna Peso' onChange={handlerPetInputs} />
                                 <input className='inputPet' type="text" name='diseases' title='diseases' placeholder='Aggiorna Malattie Croniche' onChange={handlerPetInputs} />
                             </div>
                             </div>
 
+                            {/* Button section */}
                             <div className="secondSectionPet">
                             <div className="containerButtonPet">
-                                <div className="button">Elimina</div>
+                                
+                                <div className="button" onClick={() => deletePet(element._id)}>Elimina</div>
                                 <div className="button" onClick={() => editPetData(element._id)} >Modifica</div>
                             </div>
                             </div>
-                           
-
-                            
-
                         </div>
-
                     ))}
                 </div>
 
