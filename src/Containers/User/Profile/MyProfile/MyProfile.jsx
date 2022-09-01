@@ -14,10 +14,11 @@ const Profile = () => {
 
 
     //hooks
-    const [pets,setPets] = useState([])
-    const [msgError,setMsgError] = useState()
+    const [pets, setPets] = useState([])
+    const [msgError, setMsgError] = useState()
+    const [petData,setPetData] = useState([])
+    console.log(petData)
 
-    console.log(pets)
 
     const [userProfile, setUserProfile] = useState({
         user_name: credentials.user_name,
@@ -31,10 +32,11 @@ const Profile = () => {
         user_password: ""
     })
 
+
     useEffect(() => {
-       
+
         myPet()
-    },[])
+    }, [])
 
 
     useEffect(() => {
@@ -43,7 +45,7 @@ const Profile = () => {
         }
     })
 
-    const myPet = async() => {
+    const myPet = async () => {
         try {
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
@@ -59,25 +61,44 @@ const Profile = () => {
 
     //To set hook userProfile with new Data
     const handlerInputs = (e) => {
-        setUserProfile({...userProfile, [e.target.name]: e.target.value})
+        setUserProfile({ ...userProfile, [e.target.name]: e.target.value })
+    }
+
+    const handlerPetInputs = (e) => {
+        setPetData({ ...petData, [e.target.name]: e.target.value })
     }
 
 
 
+
     const editDetails = () => {
-        if(userProfile.user_password == "" ){
+        if (userProfile.user_password == "") {
             setMsgError("Devi inserire la password");
             setTimeout(() => {
                 setMsgError("")
             }, 3000);
-        }else if(userProfile.user_password !== userProfile.user_password2){
+        } else if (userProfile.user_password !== userProfile.user_password2) {
             setMsgError("Le due password non coincidono");
             setTimeout(() => {
                 setMsgError("")
             }, 3000);
-        }else{
-            dispatch(updateUser(credentials,userProfile))
-        } 
+        } else {
+            dispatch(updateUser(credentials, userProfile))
+        }
+    }
+
+
+    const editPetData = async(id) => {
+        try {
+            let config = {
+                headers: { Authorization: `Bearer ${credentials.token}` }
+            };
+
+            const attempt = await axios.put(`https://bbdd-cv2.herokuapp.com/api/pet${id}`, petData, config)
+            console.log(attempt)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -98,9 +119,9 @@ const Profile = () => {
                     <p>Password</p>
                     <input type="password" name='user_password' title='password' value={userProfile.user_password} onChange={handlerInputs} />
                     <input type="password" name='user_password2' title='password' value={userProfile.user_password2} onChange={handlerInputs} />
-                    
-                   
-                   
+
+
+
 
                 </div>
                 <div className="containerButtonProfile">
@@ -112,11 +133,40 @@ const Profile = () => {
             <div className="profilePetContainer">
                 <h1>I Miei Animali</h1>
                 <div className="petResult">
-                {pets.map(element => (
-                    <div className="containerPet" key={element._id}>{element.name}</div>
-                ))}
+                    {pets.map(element => (
+                        <div className="containerPet" key={element._id}>
+                            <div className="firstSectionPet">
+                            <div className="actualProfilePet">
+                                <input className='inputPet' type="text" name='pet_name' title='name' value={element.name} />
+                                <input className='inputPet' type="text" name='pet_type' title='type' value={element.type} />
+                                <input className='inputPet' type="text" name='pet_age' title='age' value={element.age} />
+                                <input className='inputPet' type="text" name='pet_weight' title='weight' value={element.weight} />
+                                <input className='inputPet' type="text" name='pet_breed' title='breed' value={element.breed} />
+                                <input className='inputPet' type="text" name='pet_deseases' title='deseases' value={element.diseases} />
+                            </div>
+
+                            <div className="actualProfilePet">
+
+                                <input className='inputPet' type="text" name='weight' title='weight' placeholder='Aggiorna Peso' onChange={handlerPetInputs} />
+                                <input className='inputPet' type="text" name='diseases' title='diseases' placeholder='Aggiorna Malattie Croniche' onChange={handlerPetInputs} />
+                            </div>
+                            </div>
+
+                            <div className="secondSectionPet">
+                            <div className="containerButtonPet">
+                                <div className="button">Elimina</div>
+                                <div className="button" onClick={() => editPetData(element._id)} >Modifica</div>
+                            </div>
+                            </div>
+                           
+
+                            
+
+                        </div>
+
+                    ))}
                 </div>
-                
+
             </div>
         </div>
     )
