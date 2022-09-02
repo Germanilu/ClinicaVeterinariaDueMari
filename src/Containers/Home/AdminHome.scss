@@ -1,0 +1,33 @@
+//Vet 
+.vetHomeDesign{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.containerCardsVet{
+    width: 90%;
+    height: 70%;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10em;
+}
+
+.consultCard, .reserveCard{
+    width: 20%;
+    height: 80%;
+    border: 1px solid blue;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+
+
+

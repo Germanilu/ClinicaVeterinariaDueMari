@@ -14,6 +14,7 @@ import Profile from './Containers/User/Profile/MyProfile/MyProfile';
 import MyReserve from './Containers/User/Profile/MyReserve/MyReserve';
 import MyConsult from './Containers/User/Profile/MyConsult/MyConsult';
 
+import SuperAdminPanel from './Containers/SuperAdmin/SuperAdminPanel'
 
 
 function App() {
@@ -32,6 +33,8 @@ function App() {
       <Route path= '/registerPet' element= {<RegisterPet/>}/>
       <Route path= '/vetConsult' element= {<VetConsult/>}/>
       <Route path= '/vetReserve' element= {<VetReserve/>}/>
+      <Route path= '/superAdminPanel' element= {<SuperAdminPanel/>}/>
+
       
     </Routes>
     <Footer/>

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Home.scss'
-import './vetHome.scss'
+import './AdminHome.scss'
 import { useNavigate } from 'react-router-dom';
 //Import To animate on scroll
 import { Slide, JackInTheBox } from "react-awesome-reveal";
@@ -8,8 +8,9 @@ import { Slide, JackInTheBox } from "react-awesome-reveal";
 import { useInView } from 'react-intersection-observer';
 import BackToTop from '../../Components/BackToTop/BackToTop';
 
-import {useDispatch, useSelector} from 'react-redux';
-import {userData, logOut} from '../../Containers/User/userSlice';
+import { useSelector } from 'react-redux';
+import { userData } from '../../Containers/User/userSlice';
+import SuperAdminPanel from '../SuperAdmin/SuperAdminPanel';
 
 
 const Home = () => {
@@ -24,7 +25,7 @@ const Home = () => {
     //var
     const navigate = useNavigate()
 
-    if(credentials?.user_role == "user" || credentials.token == "" ){
+    if (credentials?.user_role == "user" || credentials.token == "") {
         return (
             <div className='homeDesign'>
                 <div className="firstSection">
@@ -80,7 +81,7 @@ const Home = () => {
                                 <button className="button" onClick={() => navigate('/reserve')} >Prenota ora</button>
                             </div>
                         </div>
-    
+
                         <div className="consultText">
                             <JackInTheBox>
                                 <h1>Prenota Un'Appuntamento</h1>
@@ -90,18 +91,18 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <BackToTop/>
+                <BackToTop />
             </div>
-    
+
         )
-    }else if (credentials.user_role == "vet"){
-        return(
+    } else if (credentials.user_role == "vet") {
+        return (
             <div className="vetHomeDesign">
-                <h1>Ciao { credentials.user_name} !</h1>
+                <h1>Ciao {credentials.user_name} !</h1>
                 <div className="containerCardsVet">
                     <div className="consultCard">
                         <h1>Consulte</h1>
-                        <div className="button"  onClick={() => navigate('/vetConsult')}>Controllare Consulte</div>
+                        <div className="button" onClick={() => navigate('/vetConsult')}>Controllare Consulte</div>
                     </div>
                     <div className="reserveCard">
                         <h1>Appuntamenti</h1>
@@ -110,7 +111,11 @@ const Home = () => {
                 </div>
             </div>
         )
+    } else if (credentials.user_role == "super_admin") {
+        return (
+            <SuperAdminPanel />
+        )
     }
-    
+
 }
 export default Home;
