@@ -21,7 +21,7 @@ const SuperAdminPanel = () => {
         password2: ''
     })
     const [vetId, setVetId] = useState()
-    const [vet, setVet] = useState([])
+    const [msgVetDeleted, setMsgVetDeleted] = useState()
     const [msgError, setMsgError] = useState()
 
     const updateVetData = (e) => {
@@ -91,10 +91,28 @@ const SuperAdminPanel = () => {
             };
             const attempt = await axios.get(`https://bbdd-cv2.herokuapp.com/api/vet/${vetId}`, config)
             console.log(attempt)
-            setVet(attempt.data.data)
+            
         } catch (error) {
             console.log(error)
 
+        }
+    }
+
+    const deleteVet = async() => {
+        try {
+            let config = {
+                headers: { Authorization: `Bearer ${credentials.token}` }
+            };
+
+            const attempt = await axios.delete(`https://bbdd-cv2.herokuapp.com/api/vet/${vetId}`, config)
+            console.log(attempt)
+            setMsgVetDeleted("Veterinario Eliminato!")
+            
+
+
+        } catch (error) {
+            console.log(error)
+            setMsgVetDeleted("Sembra ci sia stato un'errore...")
         }
     }
 
@@ -119,27 +137,54 @@ const SuperAdminPanel = () => {
                     </div>
 
                     {/* Box Find Vet */}
-                    <div className="findVet">
-                        <h1>Cercare Veterinario</h1>
-                        <input className='inputShort' type="email" name='email' title='email' onChange={onChangeHandler} />
-                        <div className="button" onClick={() => findVet()}>Cerca</div>
-
-                        <div className="resultContainer">
-                            {vet.name !== undefined &&
-                                <div>
-                                    <p>Id: {vet._id} </p>
-                                    <p>Nome: {vet.name} </p>
-                                    <p>Cognome: {vet.surname} </p>
-                                    <p>Specializzazione: {vet.specialization} </p>
-                                    <p>Email: {vet.email} </p>
-                                </div>
-                            }
-                        </div>
-
-
+                    <div className="deleteVet">
+                        <h1>Eliminare Veterinario</h1>
+                        <input className='inputShort' type="email" name='email' title='email' onChange={onChangeHandler} placeholder="Inserire ID Veterinario" />
+                        {msgVetDeleted}
+                        <div className="button" onClick={() => deleteVet()}>Elimina</div>
                     </div>
+                </div>
 
-
+                <div className="containerResearch">
+                    <h1>Cosa vuoi Cercare?</h1>
+                    <div className="researchInputContainer">
+                        <div className="allVetInput">
+                            <h2>Ricerca tutti i Veterinari</h2>
+                            
+                            <div className="button">Cerca</div>
+                        </div>
+                        <div className="allUserInput">
+                            <h2>Ricerca tutti gli Utenti</h2>
+                            
+                            <div className="button">Cerca</div>
+                        </div>
+                        <div className="allPetsd">
+                            <h2>RicercaTutti gli Animali</h2>
+                            
+                            <div className="button">Cerca</div>
+                        </div>
+                        <div className="vetById">
+                            <h2>Ricerca Veterinario Tramite ID</h2>
+                            <input className='inputShort' type="text" />
+                            <div className="button">Cerca</div>
+                        </div>
+                        <div className="userById">
+                            <h2>Ricerca Utente Tramite ID</h2>
+                            <input className='inputShort' type="text" />
+                            <div className="button">Cerca</div>
+                        </div>
+                        <div className="petById">
+                            <h2>Ricerca Animale Tramite ID</h2>
+                            <input className='inputShort' type="text" />
+                            <div className="button">Cerca</div>
+                        </div>
+                        <div className="allConsult">
+                            <h2>Ricerca Tutte le consulte</h2>
+                            <div className="button">Cerca</div>
+                        </div>
+                        
+                       
+                    </div>
                 </div>
             </div>
         </div>
