@@ -40,7 +40,7 @@ const Header = () => {
                 </div>
             </div>
         )
-    }else if(credentials?.user_role == "vet"){
+    }else if(credentials?.user_role !== "user"){
         return(
             <div className='headerDesign'>
                 <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>

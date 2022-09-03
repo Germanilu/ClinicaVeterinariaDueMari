@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './UserReserve.scss'
-
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { userData } from '../../User/userSlice';
@@ -8,17 +7,13 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 
 
-
-
-
-
 const UserReserve = () => {
 
     //Var
     const credentials = useSelector(userData);
+
     //Hooks
     const [date, onChange] = useState(new Date());
-
     const [hour, setHour] = useState()
     const [msgError, setMsgError] = useState();
 
@@ -71,7 +66,6 @@ const UserReserve = () => {
                     <h1>Seleziona un orario</h1>
                     <select name="hour" onChange={updateHour} >
                         <option value="default">Seleziona un'orario</option>
-
                         <option value="09:00">09:00</option>
                         <option value="09:30">09:30</option>
                         <option value="10:00">10:00</option>
@@ -94,9 +88,6 @@ const UserReserve = () => {
             </div>
             {msgError}
             <div className="button" onClick={() => reserve()} >Richiedi Appuntamento</div>
-
-
-
         </div>
     )
 }
