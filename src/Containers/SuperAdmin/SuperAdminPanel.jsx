@@ -4,12 +4,10 @@ import { useSelector } from 'react-redux';
 import { userData } from '../../Containers/User/userSlice';
 import axios from 'axios';
 
-
 const SuperAdminPanel = () => {
 
     //Var
     const credentials = useSelector(userData);
-
 
     //Hooks
     const [vetData, setVetData] = useState({
@@ -20,13 +18,14 @@ const SuperAdminPanel = () => {
         password: '',
         password2: ''
     })
+
     const [id, setId] = useState()
     const [msgVetDeleted, setMsgVetDeleted] = useState()
     const [showResearch, setShowResearch] = useState([])
     const [showResearchById, setShowResearchById] = useState()
+    const [callFunction, setCallFunction] = useState()
     const [msgError, setMsgError] = useState()
 
-    console.log(showResearch.length)
 
     const updateVetData = (e) => {
         setVetData({ ...vetData, [e.target.name]: e.target.value })
@@ -34,7 +33,6 @@ const SuperAdminPanel = () => {
 
     //Register new vet
     const vetRegister = async () => {
-
         //Regular expression
         //Email
         if (!vetData.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)) {
@@ -69,7 +67,6 @@ const SuperAdminPanel = () => {
             return;
         }
 
-
         try {
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
@@ -88,126 +85,61 @@ const SuperAdminPanel = () => {
         console.log(id)
     }
 
-
-
     //Delete vet Function
     const deleteVet = async () => {
         try {
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
-
             const attempt = await axios.delete(`https://bbdd-cv2.herokuapp.com/api/vet/${id}`, config)
             console.log(attempt)
             setMsgVetDeleted("Veterinario Eliminato!")
-
-
-
         } catch (error) {
             console.log(error)
             setMsgVetDeleted("Sembra ci sia stato un'errore...")
         }
     }
 
-    //Get all vets on db
-    const findAllVets = async () => {
+    //Function that include all the general research Super_Admin can make
+    const axiosRequestFunction = async () => {
         try {
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
 
-            const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/vet", config)
-            console.log(attempt)
-            setShowResearch(attempt.data.data)
+            switch (callFunction) {
+                case 'allVets':
+                    const vets = await axios.get("https://bbdd-cv2.herokuapp.com/api/vet", config)
+                    setShowResearch(vets.data.data)
+                    break;
+                case 'allUsers':
+                    const users = await axios.get("https://bbdd-cv2.herokuapp.com/api/users", config)
+                    setShowResearch(users.data.data)
+                    break;
+                case 'allPets':
+                    const pets = await axios.get("https://bbdd-cv2.herokuapp.com/api/pets", config)
+                    setShowResearch(pets.data.data);
+                    break;
+                case 'allConsults':
+                    const consults = await axios.get("https://bbdd-cv2.herokuapp.com/api/allConsults", config)
+                    setShowResearch(consults.data.data);
+                case 'vetId':
+                    const vetId = await axios.get(`https://bbdd-cv2.herokuapp.com/api/vet/${id}`, config)
+                    setShowResearchById(vetId.data.data);
+                    break;
+                case 'userId':
+                    const userId = await axios.get(`https://bbdd-cv2.herokuapp.com/api/users/${id}`, config)
+                    setShowResearchById(userId.data.data);
+                    break;
+                case 'petId':
+                    const petId = await axios.get(`https://bbdd-cv2.herokuapp.com/api/pets${id}`, config)
+                    setShowResearchById(petId.data.data)
+            }
         } catch (error) {
             console.log(error)
+            setShowResearchById("Sembra ci sia stato un'errore")
         }
     }
-
-    //Gets all user on db
-    const findAllUsers = async () => {
-        try {
-            let config = {
-                headers: { Authorization: `Bearer ${credentials.token}` }
-            };
-            const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/users", config)
-            console.log(attempt)
-            setShowResearch(attempt.data.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const findAllPets = async () => {
-        try {
-            let config = {
-                headers: { Authorization: `Bearer ${credentials.token}` }
-            };
-            const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/pets", config)
-            console.log(attempt)
-            setShowResearch(attempt.data.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const findAllConsults = async () => {
-        try {
-            let config = {
-                headers: { Authorization: `Bearer ${credentials.token}` }
-            };
-            const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/allConsults", config)
-            console.log(attempt)
-            setShowResearch(attempt.data.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-
-    // ID RESEARCH FUNCTION 
-
-    const findUserById = async () => {
-        try {
-            let config = {
-                headers: { Authorization: `Bearer ${credentials.token}` }
-            };
-            const attempt = await axios.get(`https://bbdd-cv2.herokuapp.com/api/users/${id}`, config)
-            console.log(attempt)
-            setShowResearchById(attempt.data.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    const findVet = async () => {
-        try {
-            let config = {
-                headers: { Authorization: `Bearer ${credentials.token}` }
-            };
-            const attempt = await axios.get(`https://bbdd-cv2.herokuapp.com/api/vet/${id}`, config)
-            console.log(attempt.data.data)
-            setShowResearchById(attempt.data.data)
-
-        } catch (error) {
-            console.log(error)
-
-        }
-    }
-
-    const findPetById = async () => {
-        try {
-            let config = {
-                headers: { Authorization: `Bearer ${credentials.token}` }
-            };
-            const attempt = await axios.get(`https://bbdd-cv2.herokuapp.com/api/pets${id}`, config)
-            console.log(attempt)
-            setShowResearchById(attempt.data.data)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
 
     return (
         <div className='superAdminDesign'>
@@ -242,19 +174,19 @@ const SuperAdminPanel = () => {
                     <div className="researchInputContainer">
                         <div className="allVetInput">
                             <h2>Ricerca tutti i Veterinari</h2>
-                            <div className="button" onClick={() => findAllVets()}>Cerca</div>
+                            <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("allVets") }}>Cerca</div>
                         </div>
                         <div className="allUserInput">
                             <h2>Ricerca tutti gli Utenti</h2>
-                            <div className="button" onClick={() => findAllUsers()}>Cerca</div>
+                            <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("allUsers") }}>Cerca</div>
                         </div>
                         <div className="allPetsd">
                             <h2>RicercaTutti gli Animali</h2>
-                            <div className="button" onClick={() => findAllPets()}>Cerca</div>
+                            <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("allPets") }}>Cerca</div>
                         </div>
                         <div className="allConsult">
                             <h2>Ricerca Tutte le consulte</h2>
-                            <div className="button" onClick={() => findAllConsults()}>Cerca</div>
+                            <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("allConsults") }}>Cerca</div>
                         </div>
                     </div>
 
@@ -333,65 +265,64 @@ const SuperAdminPanel = () => {
                         <div className="vetById">
                             <h2>Ricerca Veterinario Tramite ID</h2>
                             <input className='inputShort' type="text" name='text' title='text' onChange={onChangeHandler} placeholder="Inserire ID Veterinario" />
-                            <div className="button" onClick={() => findVet()}>Cerca</div>
+                            <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("vetId") }}>Cerca</div>
                         </div>
                         <div className="userById">
                             <h2>Ricerca Utente Tramite ID</h2>
                             <input className='inputShort' type="text" name='text' title='text' onChange={onChangeHandler} placeholder="Inserire ID Utente" />
-                            <div className="button" onClick={() => findUserById()}>Cerca</div>
+                            <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("userId") }}>Cerca</div>
                         </div>
                         <div className="petById">
                             <h2>Ricerca Animale Tramite ID</h2>
                             <input className='inputShort' type="text" name='text' title='text' onChange={onChangeHandler} placeholder="Inserire ID Animale" />
-                            <div className="button" onClick={() => findPetById()}>Cerca</div>
+                            <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("petId") }}>Cerca</div>
                         </div>
                     </div>
                     <div className="containerResearchByID">
-                       
+
                         {showResearchById !== undefined && (
                             <div>
                                 {showResearchById.role === "vet" && (
                                     <div className="contElement">
-                                    <div>
-                                        <p>ID: {showResearchById._id}</p>
-                                        <p>Nome: {showResearchById.name}</p>
-                                        <p>Cognome: {showResearchById.surname}</p>
-                                        <p>Specializzazione: {showResearchById.specialization}</p>
-                                        <p>Email: {showResearchById.email}</p>
+                                        <div>
+                                            <p>ID: {showResearchById._id}</p>
+                                            <p>Nome: {showResearchById.name}</p>
+                                            <p>Cognome: {showResearchById.surname}</p>
+                                            <p>Specializzazione: {showResearchById.specialization}</p>
+                                            <p>Email: {showResearchById.email}</p>
+                                        </div>
                                     </div>
-                                </div>
                                 )}
 
                                 {showResearchById.role === "user" && (
                                     <div className="contElement">
 
-                                    <p>ID: {showResearchById._id}</p>
-                                    <p>Nome: {showResearchById.name}</p>
-                                    <p>Cognome: {showResearchById.surname}</p>
-                                    <p>Telefono: {showResearchById.mobile}</p>
-                                    <p>Indirizzo: {showResearchById.address} {showResearchById.city}</p>
-                                    <p>Telefono: {showResearchById.mobile}</p>
-                                    <p>Email: {showResearchById.email}</p>
+                                        <p>ID: {showResearchById._id}</p>
+                                        <p>Nome: {showResearchById.name}</p>
+                                        <p>Cognome: {showResearchById.surname}</p>
+                                        <p>Telefono: {showResearchById.mobile}</p>
+                                        <p>Indirizzo: {showResearchById.address} {showResearchById.city}</p>
+                                        <p>Telefono: {showResearchById.mobile}</p>
+                                        <p>Email: {showResearchById.email}</p>
 
-                                </div>
+                                    </div>
                                 )}
 
                                 {showResearchById.age !== undefined && (
-                                     <div className="contElement" >
+                                    <div className="contElement" >
+                                        <p>ID: {showResearchById._id}</p>
+                                        <p>Nome: {showResearchById.name}</p>
+                                        <p>Età: {showResearchById.age}</p>
+                                        <p>Specie: {showResearchById.breed}</p>
+                                        <p>Razza: {showResearchById.type} </p>
+                                        <p>Peso: {showResearchById.weight}</p>
+                                        <p>Malattie Croniche: {showResearchById.diseases}</p>
 
-                                     <p>ID: {showResearchById._id}</p>
-                                     <p>Nome: {showResearchById.name}</p>
-                                     <p>Età: {showResearchById.age}</p>
-                                     <p>Specie: {showResearchById.breed}</p>
-                                     <p>Razza: {showResearchById.type} </p>
-                                     <p>Peso: {showResearchById.weight}</p>
-                                     <p>Malattie Croniche: {showResearchById.diseases}</p>
-
-                                 </div>
+                                    </div>
                                 )}
                             </div>
                         )}
-                        
+
                     </div>
                 </div>
             </div>
