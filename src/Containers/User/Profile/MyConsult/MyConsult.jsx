@@ -14,7 +14,7 @@ const MyConsult = () => {
     //Hooks
     const [allConsult, setAllConsult] = useState([])
     const [show, setShow] = useState()
-    const [msg,setMsg] = useState()
+    const [msg, setMsg] = useState()
 
     useEffect(() => {
         consult()
@@ -72,7 +72,7 @@ const MyConsult = () => {
                     )
                 )
                 }
-            </div>
+            </div>           
         </div>
     )
 }

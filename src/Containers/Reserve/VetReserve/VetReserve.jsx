@@ -13,10 +13,10 @@ import { useSelector } from 'react-redux';
 import { userData } from '../../../Containers/User/userSlice';
 import axios from 'axios';
 
+
 let locales = {
     'it': require("date-fns/locale/it")
 }
-
 
 const localizer = dateFnsLocalizer({
     format,
@@ -52,7 +52,7 @@ const VetReserve = () => {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/booking/", config)
-
+            console.log(attempt)
             //Here for Each result i compose the date in the correct format and add to the hook all the data retrive from the axios request
             attempt.data.data.forEach(element => {
                 let rowDate = element.date + " " + element.hour

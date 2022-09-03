@@ -134,7 +134,6 @@ const UserConsult = () => {
                     <div className="button buttonConsult" onClick={()=> createConsult()}>Invia Consulta</div>
 
                 </div>
-
             </div>
         </div>
     )
