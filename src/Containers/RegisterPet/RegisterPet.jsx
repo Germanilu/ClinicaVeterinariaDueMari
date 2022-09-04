@@ -80,7 +80,7 @@ const RegisterPet = () => {
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Età</p>
-                            <input type="text" name='age' title='age' onChange={updatePetData}  />
+                            <input type="text" name='age' title='age' onChange={updatePetData} placeholder="GG/MM/AAAA"  />
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Peso</p>

@@ -11,7 +11,6 @@ const UserConsult = () => {
     const credentials = useSelector(userData);
     const navigate = useNavigate()
 
-
     //hooks
     const [pets, setPets] = useState([])
     const [message,SetMessage] = useState({petId: '', userMessage: ''})
@@ -132,7 +131,6 @@ const UserConsult = () => {
                     <textarea name="userMessage" className='inputConsult' placeholder="Scrivi qui... " onChange={updateMessage}></textarea>
                     {msgError}
                     <div className="button buttonConsult" onClick={()=> createConsult()}>Invia Consulta</div>
-
                 </div>
             </div>
         </div>

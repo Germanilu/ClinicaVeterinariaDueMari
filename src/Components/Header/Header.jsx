@@ -53,7 +53,6 @@ const Header = () => {
         )
     }
     
-    
     else{
         return(
             <div className='headerDesign'>
