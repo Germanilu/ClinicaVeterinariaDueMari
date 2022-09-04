@@ -24,9 +24,9 @@ const MyReserve = () => {
 
 
     useEffect(() => {
-        // if (credentials.token === '') {
-        //     navigate('/login')
-        // }
+        if (credentials.token === '') {
+            navigate('/login')
+        }
     })
 
 
