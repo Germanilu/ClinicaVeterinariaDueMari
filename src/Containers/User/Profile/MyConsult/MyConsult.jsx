@@ -5,6 +5,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+//Icons
+import { GoArrowSmallRight, GoArrowSmallDown } from "react-icons/go";
+
 const MyConsult = () => {
 
     //Var
@@ -13,8 +16,6 @@ const MyConsult = () => {
 
     //Hooks
     const [allConsult, setAllConsult] = useState([])
-    const [show, setShow] = useState()
-    const [msg, setMsg] = useState()
 
     useEffect(() => {
         consult()
@@ -22,9 +23,9 @@ const MyConsult = () => {
 
 
     useEffect(() => {
-        // if (credentials.token === '') {
-        //     navigate('/login')
-        // }
+        if (credentials.token === '') {
+            navigate('/login')
+        }
     })
 
     const consult = async () => {
@@ -32,48 +33,60 @@ const MyConsult = () => {
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
-
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myConsult", config)
             console.log(attempt)
             setAllConsult(attempt.data.data)
-            setMsg("Ecco tutte le tue consulte")
 
         } catch (error) {
-            setMsg("Sembra che tu non abbia ancora richiesto nessun consulto Online")
             console.log(error)
         }
     }
 
-    //Receive idConsult as parameter and change the state of the hook 
-    const isClick = (id) => {
-        show === "" ? setShow(id) : setShow("")
-    }
-
     return (
-        <div className='myConsultDesign'>
-            <div className="myConsultContainer">
-                {allConsult.length === 0 && (
-                    <p>
-                        {msg} Vuoi richiedere un consulto? <span onClick={() => navigate('/consult')}>Clicca qui!</span>
-                    </p>
-                )}
-                {allConsult.length > 0 && (
-                    allConsult.map((element) => {
-                        return (
-                            <div className="myConsultBox" key={element._id} onClick={() => isClick(element._id)} > <strong>Data Consulto Online:</strong>  {element.date}
-                                <div className={show === element._id ? "showContainerConsult" : "hideContainerConsult"} >
-                                    <div className="containerConsultText"> <strong>Messaggio:</strong>  {element.userMessage}</div>
-                                    <div className="containerConsultText"> <strong>Risposta Veterinario:</strong>  {element.vetMessage}</div>
-                                </div>
+        <section>
+            <h1>Ecco i tuoi consulti</h1>
+            {allConsult.length === 0 && (
+                <p className='noConsultP'>
+                    Sembra tu non abbia richiesto ancora nessun consulto online. <br /> Vuoi richiedere un consulto? <span onClick={() => navigate('/consult')}>Clicca qui!</span>
+                </p>
+            )}
+            <div class="container">
+                <div class="accordion">
+                    {allConsult.length > 0 && (
+                        allConsult.map((element) => {
+                            return (
+                                <div>
+                                    <div class="accordionItem" id={element._id}>
+                                        <a class="accordionLink" href={`#${element._id}`}>
+                                            <div class="flexAccordionHeader">
+                                                <h3>Data Consulto: </h3>
+                                                <p>{element.date}</p>
+                                            </div>
+                                            <i class="icon iconMdArrowForward"><GoArrowSmallRight /></i>
+                                            <i class="icon iconMdArrowDown"><GoArrowSmallDown /></i>
+                                        </a>
+                                        <div class="answer">
+                                            <h3>Domanda:</h3>
+                                            <p>{element.userMessage}</p>
+                                            {element.vetName ? (
+                                                <div>
+                                                    <h3>Ti ha risposto {element.vetName}</h3>
+                                                    <p>{element.vetMessage}</p>
+                                                </div>
+                                            ) : (
+                                                <h3>Riceverai una risposta entro 48h</h3>
+                                            )
+                                            }
 
-                            </div>
-                        )
-                    }
-                    )
-                )
-                }
-            </div>           
-        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    )}
+                </div>
+            </div>
+        </section>
     )
 }
 export default MyConsult;
