@@ -19,7 +19,7 @@ const Footer = () => {
 
     return (
         <div className='footerDesign'>
-            <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>
+            <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoClinicaNoBG.png')} alt="Logo Duemari" className='logo' /></div>
             <div className="socialContainer">
                 <ul className="wrapper">
                     <a href="https://www.facebook.com/clinica.duemari/">

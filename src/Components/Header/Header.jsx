@@ -32,7 +32,7 @@ const Header = () => {
     if(!credentials?.user_role){
         return (
             <div className='headerDesign'>
-                <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>
+                <div className="logoHeader" onClick={() => move('/')}><img src={require('../../img/logoClinicaNoBG.png')} alt="Logo Duemari" className='logoHeaderImg' /></div>
                 <div className="containerMenu">
                     <div className="headerButton" onClick={() => move('/consult')}>Consulto Online</div>
                     <div className="headerButton" onClick={() => move('/reserve')}>Richiedi Appuntamento</div>
@@ -43,7 +43,7 @@ const Header = () => {
     }else if(credentials?.user_role !== "user"){
         return(
             <div className='headerDesign'>
-                <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>
+                <div className="logoHeader" onClick={() => move('/')}><img src={require('../../img/logoClinicaNoBG.png')} alt="Logo Duemari" className='logoHeaderImg' /></div>
                 <div className="containerMenu">
                     <div className="headerButton" onClick={() => move('/vetConsult')}>Consulte</div>
                     <div className="headerButton" onClick={() => move('/vetReserve')}>Appuntamenti</div>
@@ -56,7 +56,7 @@ const Header = () => {
     else{
         return(
             <div className='headerDesign'>
-                <div className="logo" onClick={() => move('/')}><img src={require('../../img/logoBlur.png')} alt="Logo Duemari" className='logo' /></div>
+                <div className="logoHeader" onClick={() => move('/')}><img src={require('../../img/logoClinicaNoBG.png')} alt="Logo Duemari" className='logoHeaderImg' /></div>
                 <div className="containerMenu">
                     <div className="headerButton" onClick={() => move('/consult')}>Consulto Online</div>
                     <div className="headerButton" onClick={() => move('/reserve')}>Richiedi Appuntamento</div>
