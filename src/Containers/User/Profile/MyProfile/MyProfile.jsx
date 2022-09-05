@@ -4,6 +4,7 @@ import { updateUser, userData } from '../../userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import BackToTop from '../../../../Components/BackToTop/BackToTop';
 
 const Profile = () => {
     //var
@@ -92,6 +93,7 @@ const Profile = () => {
 
             const attempt = await axios.put(`https://bbdd-cv2.herokuapp.com/api/pet${id}`, petData, config)
             console.log(attempt)
+            window.location.reload();
         } catch (error) {
             console.log(error)
         }
@@ -106,6 +108,7 @@ const Profile = () => {
 
             const attempt = await axios.delete(`https://bbdd-cv2.herokuapp.com/api/pet${id}`, config)
             console.log(attempt)
+            navigate('/')
             
         } catch (error) {
             console.log(error)
@@ -124,7 +127,7 @@ const Profile = () => {
                     <input type="text" name='user_address' title='address' lenght='30' value={userProfile.user_address} onChange={handlerInputs} />
                     <input type="text" name='user_city' title='city' value={userProfile.user_city} onChange={handlerInputs} />
                     <input type="email" name='user_email' title='email' value={userProfile.user_email} onChange={handlerInputs} />
-                    <p>Password</p>
+                    <h3>Password</h3>
                     <input type="password" name='user_password' title='password' value={userProfile.user_password} onChange={handlerInputs} />
                     <input type="password" name='user_password2' title='password' value={userProfile.user_password2} onChange={handlerInputs} />
                 </div>
@@ -141,7 +144,9 @@ const Profile = () => {
                 <div className="petResult">
                     {pets.map(element => (
                         <div className="containerPet" key={element._id}>
+                            <div className="imgContainerProfile"><img src={element.avatar} alt="avatar" /></div>
                             <div className="firstSectionPet">
+                            
                             <div className="actualProfilePet">
                                 <input className='inputPet' type="text" name='pet_name' title='name' value={element.name} />
                                 <input className='inputPet' type="text" name='pet_type' title='type' value={element.type} />
@@ -156,6 +161,7 @@ const Profile = () => {
                                 <input className='inputPet' type="text" name='weight' title='weight' placeholder='Aggiorna Peso' onChange={handlerPetInputs} />
                                 <input className='inputPet' type="text" name='diseases' title='diseases' placeholder='Aggiorna Malattie Croniche' onChange={handlerPetInputs} />
                             </div>
+                           
                             </div>
 
                             {/* Button section */}
@@ -169,7 +175,7 @@ const Profile = () => {
                         </div>
                     ))}
                 </div>
-
+                        <BackToTop/>
             </div>
         </div>
     )
