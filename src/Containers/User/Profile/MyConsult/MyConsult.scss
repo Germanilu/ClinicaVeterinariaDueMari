@@ -9,7 +9,7 @@
 section {
     width: 100%;
     height: 100vh;
-    background-color: #ebfbf3;
+    background-color: rgb(175, 240, 229);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -90,6 +90,7 @@ section {
     position: relative;
     background-color: #92f3e3;
     transition: max-height 650ms;
+    padding-left: 1.5em;
 }
 
 .answer>h3{

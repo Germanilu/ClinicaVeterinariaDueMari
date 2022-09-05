@@ -6,6 +6,7 @@
     justify-content: space-evenly;
     gap: -5em;
     flex-direction: column;
+    background-color: rgb(175, 240, 229);
 }
 
 .registerPetDesign>p{
@@ -15,19 +16,21 @@
 .containerRegisterPet{
     width: 70%;
     height: 60%;
-    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background: #92f3e3;
+    box-shadow: 0 .50rem .50rem rgba(0, 0, 0, 0.2), 0 0 2rem rgba(0, 0, 0, 0.2);
 }
 
-.containerPictAndInput{
+.containerInput{
     width: 100%;
-    height: 90%;
+    height: 60%;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    // border: 1px solid black;
 }
 .petPict{
     width: 20%;

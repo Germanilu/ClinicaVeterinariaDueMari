@@ -5,14 +5,14 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #ebfbf3;
+    background-color: #ecfaf7;
     gap: 1em;
 }
 
 .containerCalendar{
-    border: 1px solid rgba(0, 0, 0, 0.308);
+    // border: 1px solid rgba(0, 0, 0, 0.308);
     box-shadow: 0 .50rem .50rem rgba(0, 0, 0, 0.2), 0 0 2rem rgba(0, 0, 0, 0.2);
-    background-color: #ebfbf3;
+    background-color: #ecfaf7;
     width: 80%;
     height: 60%;
     display: flex;

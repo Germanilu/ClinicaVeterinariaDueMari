@@ -50,22 +50,22 @@ const MyConsult = () => {
                     Sembra tu non abbia richiesto ancora nessun consulto online. <br /> Vuoi richiedere un consulto? <span onClick={() => navigate('/consult')}>Clicca qui!</span>
                 </p>
             )}
-            <div class="container">
-                <div class="accordion">
+            <div className="container">
+                <div className="accordion">
                     {allConsult.length > 0 && (
                         allConsult.map((element) => {
                             return (
                                 <div>
-                                    <div class="accordionItem" id={element._id}>
-                                        <a class="accordionLink" href={`#${element._id}`}>
-                                            <div class="flexAccordionHeader">
+                                    <div className="accordionItem" id={element._id}>
+                                        <a className="accordionLink" href={`#${element._id}`}>
+                                            <div className="flexAccordionHeader">
                                                 <h3>Data Consulto: </h3>
                                                 <p>{element.date}</p>
                                             </div>
-                                            <i class="icon iconMdArrowForward"><GoArrowSmallRight /></i>
-                                            <i class="icon iconMdArrowDown"><GoArrowSmallDown /></i>
+                                            <i className="icon iconMdArrowForward"><GoArrowSmallRight /></i>
+                                            <i className="icon iconMdArrowDown"><GoArrowSmallDown /></i>
                                         </a>
-                                        <div class="answer">
+                                        <div className="answer">
                                             <h3>Domanda:</h3>
                                             <p>{element.userMessage}</p>
                                             {element.vetName ? (

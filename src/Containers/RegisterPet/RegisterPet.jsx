@@ -22,6 +22,7 @@ const RegisterPet = () => {
         diseases: '',
     });
 
+
     useEffect(() => {
 
     }, [])
@@ -62,8 +63,8 @@ const RegisterPet = () => {
             <h1>Registra un Animale</h1>
             <p>Prima di poter Utilizzare i nostri servizi registra un'animale</p>
             <div className="containerRegisterPet">
-                <div className="containerPictAndInput">
-                    <div className="petPict">Foto Animale</div>
+                <h1>Qualche dato del tuo amico...</h1>
+                <div className="containerInput">
                     {/* Inputs */}
                     <div className="containerRegisterPetInput">
                         <div className="inputReg">
@@ -72,7 +73,7 @@ const RegisterPet = () => {
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Specie</p>
-                            <input type="text" name='type' title='type' placeholder='Cane,Gatto,Roditore, Coniglio, Equino...' onChange={updatePetData}  />
+                            <input type="text" name='type' title='type' placeholder='Cane,Gatto,Roditore, Coniglio, Uccello' onChange={updatePetData}  />
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Razza</p>
