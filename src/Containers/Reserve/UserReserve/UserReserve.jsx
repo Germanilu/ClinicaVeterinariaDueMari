@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './UserReserve.scss'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import './UserReserve.scss'
 import { userData } from '../../User/userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -71,7 +71,7 @@ const UserReserve = () => {
             <div className="containerCalendar">
                 <div className="calendar">
                     <h1>Seleziona una data</h1>
-                    <Calendar onChange={onChange} value={date} locale="it" />
+                    <Calendar onChange={onChange} value={date} locale="it"/>
 
                 </div>
                 <div className="containerHour">
