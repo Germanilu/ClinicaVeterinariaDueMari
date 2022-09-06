@@ -102,12 +102,15 @@ const UserConsult = () => {
 
     return (
         <div className='consultDesign'>
-            <div className="consultText">Scrivi la tua consulta, entro 48h ti risponderemo!</div>
-            <div className="containerConsult">
+            <div className="consultContainerLeft">
+                <div className="consultLeftImg"><img src={require("../../../img/consult-man.jpg")} alt="" /></div>
+                <p>Scrivi la tua consulta, entro 48h ti risponderemo!</p>
+            </div>
 
+            <div className="consultContainerRight">
                 <div className="boxContainerConsultData">
                     {/* Mapping result of pets from axios inside the dropdown menu */}
-                    <select name="petId" className='selectPet' onChange={updateMessage}> 
+                    <select name="petId"  onChange={updateMessage}> 
                         <option name='default' value="default">Seleziona un'Animale</option>
                         {pets.map(element => (
                             <option key={element.id}  value={element._id} >{element.name}</option>
@@ -115,15 +118,15 @@ const UserConsult = () => {
                     </select>
                     <div className="containerDataPet">
                         {infoChoosenPet !== undefined && 
-                        <div>
-                            <p>Nome: {infoChoosenPet.name}</p>
-                            <p>Specie: {infoChoosenPet.type}</p>   
-                            <p>Razza: {infoChoosenPet.breed}</p>   
-                            <p>Età: {infoChoosenPet.age}</p>   
-                            <p>Peso: {infoChoosenPet.weight} KG</p>   
+                        <div  className='containerDataPetdiv'>
+                            <div className="containerDataPetImg"><img src={infoChoosenPet.avatar} alt="" /></div>
+                            <p> <strong> Nome: </strong>{infoChoosenPet.name}</p>
+                            <p><strong>Specie: </strong>{infoChoosenPet.type}</p>   
+                            <p><strong>Razza: </strong>{infoChoosenPet.breed}</p>   
+                            <p><strong>Età: </strong>{infoChoosenPet.age}</p>   
+                            <p><strong>Peso: </strong>{infoChoosenPet.weight} KG</p>   
                         </div>
                         }
-
                     </div>
                 </div>
 
