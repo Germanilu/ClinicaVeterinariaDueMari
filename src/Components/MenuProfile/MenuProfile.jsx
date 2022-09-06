@@ -3,8 +3,8 @@ import './MenuProfile.scss'
 
 import { useNavigate } from 'react-router-dom';
 
-const MenuProfile = ({show,setShow}) => {
-    
+const MenuProfile = ({ show, setShow }) => {
+
     const navigate = useNavigate()
 
     //This function is here to be able to navigate to section and also change the state of the MenuProfile Hook to be able to close it.
@@ -12,13 +12,15 @@ const MenuProfile = ({show,setShow}) => {
         navigate(i)
         setShow(false)
     }
-     return (
-         <div className='menuProfileDesign'>
-            <div className="button" onClick={() => move('/registerPet')}>Nuovo Animale</div>
-            <div className="button" onClick={() => move('/myReserve')}>Appuntamenti</div>
-            <div className="button" onClick={() => move('/myConsult')}>I miei consulti</div>
-            <div className="button" onClick={() => move('/myProfile')}>Il mio Profilo</div>
-         </div>
-     )
+    return (
+        <div className="menuProfileDesign">
+            <ul class="dropdown">
+                <li><a onClick={() => move('/registerPet')} className='anim-1 aProfile'>Nuovo Animale</a></li>
+                <li><a onClick={() => move('/myReserve')}  className='anim-2 aProfile'>Appuntamenti</a></li>
+                <li><a  onClick={() => move('/myConsult')} className='anim-3 aProfile'>I miei consulti</a></li>
+                <li><a onClick={() => move('/myProfile')} className='anim-4 aProfile'>Il mio profilo</a></li>
+            </ul>
+        </div>
+    )
 }
 export default MenuProfile;
