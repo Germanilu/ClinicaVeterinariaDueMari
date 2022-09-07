@@ -11,9 +11,9 @@ const RegisterPet = () => {
     const credentials = useSelector(userData);
     const navigate = useNavigate()
 
-     //Hooks
-     const [msgError,setMsgError] = useState();
-     const [petData, setPetData] = useState({
+    //Hooks
+    const [msgError, setMsgError] = useState();
+    const [petData, setPetData] = useState({
         name: '',
         type: '',
         breed: '',
@@ -22,36 +22,35 @@ const RegisterPet = () => {
         diseases: '',
     });
 
-
     useEffect(() => {
 
     }, [])
 
     useEffect(() => {
-        if(credentials.token === ""){
+        if (credentials.token === "") {
             navigate('/')
         }
     })
 
-     //Functions
-     const updatePetData = (e) => {
+    //Functions
+    const updatePetData = (e) => {
         setPetData({ ...petData, [e.target.name]: e.target.value })
     }
 
-    const registerPet = async() => {
+    const registerPet = async () => {
         try {
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
 
-            await axios.post("https://bbdd-cv2.herokuapp.com/api/pet/register", petData,config)
+            await axios.post("https://bbdd-cv2.herokuapp.com/api/pet/register", petData, config)
             setMsgError("Animale Registrato Correttamente!")
             setTimeout(() => {
                 navigate('/')
             }, 3000);
-            
+
         } catch (error) {
-            setMsgError(error.response.data.message) 
+            setMsgError(error.response.data.message)
             setTimeout(() => {
                 setMsgError("")
             }, 5000);
@@ -69,27 +68,33 @@ const RegisterPet = () => {
                     <div className="containerRegisterPetInput">
                         <div className="inputReg">
                             <p className='inputParReg'>Nome</p>
-                            <input type="text" name='name' title='name'  onChange={updatePetData} />
+                            <input type="text" name='name' title='name' onChange={updatePetData} />
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Specie</p>
-                            <input type="text" name='type' title='type' placeholder='Cane,Gatto,Roditore, Coniglio, Uccello' onChange={updatePetData}  />
+                            <select className='selectNewPet' name="type" onChange={updatePetData}>
+                                <option value="Cane">Cane</option>
+                                <option value="Gatto">Gatto</option>
+                                <option value="Coniglio">Coniglio</option>
+                                <option value="Roditore">Roditore</option>
+                                <option value="Uccello">Uccello</option>
+                            </select>
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Razza</p>
-                            <input type="text" name='breed' title='breed' onChange={updatePetData}  />
+                            <input type="text" name='breed' title='breed' onChange={updatePetData} />
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Età</p>
-                            <input type="text" name='age' title='age' onChange={updatePetData} placeholder="GG/MM/AAAA"  />
+                            <input type="text" name='age' title='age' onChange={updatePetData} placeholder="GG/MM/AAAA" />
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Peso</p>
-                            <input type="text" name='weight' title='weight' onChange={updatePetData}  />
+                            <input type="text" name='weight' title='weight' onChange={updatePetData} />
                         </div>
                         <div className="inputReg">
                             <p className='inputParReg'>Malattie Croniche</p>
-                            <input type="text" name='diseases' title='diseases' onChange={updatePetData}  />
+                            <input type="text" name='diseases' title='diseases' onChange={updatePetData} />
                         </div>
                     </div>
                 </div>
