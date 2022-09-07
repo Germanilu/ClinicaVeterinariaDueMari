@@ -31,8 +31,6 @@ const VetConsult = () => {
         if (credentials.token === '') {
             navigate('/login')
         }
-
-
     })
 
     //Verify all the existing unreply consult on DB
@@ -43,7 +41,6 @@ const VetConsult = () => {
             };
 
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/allConsultsUnrep", config)
-            console.log(attempt)
             setUnreplyConsult(attempt.data.data)
         } catch (error) {
             console.log(error)
@@ -58,7 +55,6 @@ const VetConsult = () => {
             };
 
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/consult", config)
-            console.log(attempt)
             setReplyConsult(attempt.data.data)
         } catch (error) {
             console.log(error)
@@ -68,9 +64,6 @@ const VetConsult = () => {
     //Send Reply to Consult
     const sendConsultReply = async (id) => {
         try {
-            console.log(id)
-            console.log(reply)
-
             const body = {
                 vetMessage: reply
             }
@@ -79,6 +72,7 @@ const VetConsult = () => {
             };
             const attempt = await axios.put(`https://bbdd-cv2.herokuapp.com/api/consult/${id}`, body, config)
             setMsg(attempt.data.message)
+            window.location.reload();
         } catch (error) {
             setMsg(error.response.data.message)
             setTimeout(() => {
