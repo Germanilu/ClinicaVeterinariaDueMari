@@ -79,9 +79,10 @@ const Profile = () => {
                 setMsgError("")
             }, 3000);
         } else {
-            setMsgError("Verrà effettuato il Logout per salvare le modifiche")
+            setMsgError("Dati Aggiornati con successo")
             setTimeout(() => {
                 dispatch(updateUser(credentials, userProfile))
+                window.location.reload();
             }, 3000);
         }
     }
@@ -109,9 +110,9 @@ const Profile = () => {
 
             const attempt = await axios.delete(`https://bbdd-cv2.herokuapp.com/api/pet${id}`, config)
             console.log(attempt)
-            setTimeout(() => {
-                navigate('/')
-            }, 1000);
+            if(attempt.status === 200){
+                window.location.reload();
+            }
 
         } catch (error) {
             console.log(error)
