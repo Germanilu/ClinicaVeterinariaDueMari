@@ -49,7 +49,7 @@ const Login = () => {
                 return;
             }
         }
-        setMsgError("")
+        setMsgError("Controllando i dati...")
         //Dispatch credentials to loginUser(Redux) & hook msgError
         dispatch(loginUser({ email: credentials.email, password: credentials.password }, setMsgError))
     }
