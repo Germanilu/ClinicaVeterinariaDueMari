@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './VetConsult.scss'
-
 import { userData } from '../../User/userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { GoArrowSmallDown } from "react-icons/go";
 
 const VetConsult = () => {
 
@@ -12,15 +12,14 @@ const VetConsult = () => {
     const credentials = useSelector(userData);
     const navigate = useNavigate()
 
-
     //hooks
     const [unreplyConsult, setUnreplyConsult] = useState([])
     const [replyConsult, setReplyConsult] = useState([])
     const [show, setShow] = useState()
-    const [replyBox,setReplyBox] = useState()
+    const [replyBox, setReplyBox] = useState()
     const [reply, setReply] = useState("")
-    const [msg,setMsg] = useState()
-   
+    const [msg, setMsg] = useState()
+
 
     useEffect(() => {
         verifyUnreplyConsult()
@@ -29,11 +28,11 @@ const VetConsult = () => {
 
 
     useEffect(() => {
-        // if (credentials.token === '') {
-        //     navigate('/login')
-        // }
+        if (credentials.token === '') {
+            navigate('/login')
+        }
 
-        
+
     })
 
     //Verify all the existing unreply consult on DB
@@ -67,7 +66,7 @@ const VetConsult = () => {
     }
 
     //Send Reply to Consult
-    const sendConsultReply = async(id) => {
+    const sendConsultReply = async (id) => {
         try {
             console.log(id)
             console.log(reply)
@@ -75,12 +74,10 @@ const VetConsult = () => {
             const body = {
                 vetMessage: reply
             }
-
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
-
-            const attempt = await axios.put(`https://bbdd-cv2.herokuapp.com/api/consult/${id}`,body, config)
+            const attempt = await axios.put(`https://bbdd-cv2.herokuapp.com/api/consult/${id}`, body, config)
             setMsg(attempt.data.message)
         } catch (error) {
             setMsg(error.response.data.message)
@@ -90,23 +87,21 @@ const VetConsult = () => {
         }
     }
 
-
     //Receive idConsult as parameter and change the state of the hook 
     const isClick = (id) => {
         show === "" ? setShow(id) : setShow("")
     }
 
     const isReply = (id) => {
-        replyBox === "" ? setReplyBox(id): setReplyBox("")
+        replyBox === "" ? setReplyBox(id) : setReplyBox("")
     }
 
 
-      //Function to update the reply of the consult
-      const updateMessage = (e) => {
+    //Function to update the reply of the consult
+    const updateMessage = (e) => {
         setReply(e.currentTarget.value)
     }
 
-  
 
     return (
         <div className='vetConsultDesign'>
@@ -116,20 +111,21 @@ const VetConsult = () => {
                     return (
                         <div className="consultBox" key={element._id} >
                             <div className="consultBoxHeader">
-                                <p><strong>Data Consulto Online: </strong>  {element.date}</p>
-                                <p><strong>Nome Utente: </strong>  {element.userName} {element.userSurname}</p>
-                                <div className="button " onClick={() => isClick(element._id)}>Dettaglio</div>
-                                
+                                <div className="widthFixContainer">
+                                    <p><strong>Data Consulto Online: </strong>  {element.date}</p>
+                                </div>
+                                <div className="widthFixContainer">
+                                    <p><strong>Nome Utente: </strong>  {element.userName} {element.userSurname}</p>
+                                </div>
+                                <GoArrowSmallDown onClick={() => isClick(element._id)} />
                             </div>
-
-
                             <div className={show === element._id ? "showConsultBox" : "hideConsultBox"}>
                                 <div className="containerConsultText"><strong>Messaggio:</strong> {element.userMessage}</div>
-                                <div className="button" onClick={() => isReply(element._id)}>Rispondi</div>
-                                <div className={replyBox === element._id ? "showReplyBox": "hideReplyBox" }>
+                                <div className="button smallButton" onClick={() => isReply(element._id)}>Rispondi</div>
+                                <div className={replyBox === element._id ? "showReplyBox" : "hideReplyBox"}>
                                     <textarea name="vetMessage" className='replyTextArea' onChange={updateMessage} ></textarea>
                                     {msg}
-                                    <div className="button" onClick={() => sendConsultReply(element._id)}>Invia Risposta</div>
+                                    <div className="button smallButton" onClick={() => sendConsultReply(element._id)}>Invia Risposta</div>
                                 </div>
 
                             </div>
@@ -143,17 +139,17 @@ const VetConsult = () => {
                     return (
                         <div className="consultBox" key={element._id} >
                             <div className="consultBoxHeader">
-                                <p><strong>Data Consulto Online: </strong>  {element.date}</p>
-                                <p><strong>Nome Utente: </strong>  {element.userName} {element.userSurname}</p>
-                                <div className="button" onClick={() => isClick(element._id)}>Dettaglio</div>
-
+                                <div className="widthFixContainer">
+                                    <p><strong>Data Consulto Online: </strong>  {element.date}</p>
+                                </div>
+                                <div className="widthFixContainer">
+                                    <p><strong>Nome Utente: </strong>  {element.userName} {element.userSurname}</p>
+                                </div>
+                                <GoArrowSmallDown onClick={() => isClick(element._id)} />
                             </div>
-
                             <div className={show === element._id ? "showConsultBox" : "hideConsultBox"}>
                                 <div className="containerConsultText"><strong>Messaggio:</strong> {element.userMessage}</div>
                                 <div className="containerConsultReply"><strong>Risposta:</strong> {element.vetMessage}</div>
-
-
                             </div>
                         </div>
                     )
