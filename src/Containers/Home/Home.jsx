@@ -2,12 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import './Home.scss'
 import './AdminHome.scss'
 import { useNavigate } from 'react-router-dom';
-//Import To animate on scroll
-// import { Slide, JackInTheBox } from "react-awesome-reveal";
+
 //Import to Enable intersectionObserver
 import { useInView } from 'react-intersection-observer';
 import BackToTop from '../../Components/BackToTop/BackToTop';
-
 import { useSelector } from 'react-redux';
 import { userData } from '../../Containers/User/userSlice';
 import SuperAdminPanel from '../SuperAdmin/SuperAdminPanel';
@@ -39,14 +37,12 @@ const Home = () => {
                 {/* Consult Section */}
                 <div className="secondSection">
                     <div className="containerSecondSection">
-                        <div className="consultText">
-                            {/* <Slide> */}
-                                <h1>Il Consulto</h1>
-                                <p>
-                                    Abbiamo creato questo servizio per<strong> potervi offrire delle consulenze online </strong> in una maniera per noi sostenibile. <br /> <br />
-                                    Ci auguriamo in questo modo di riuscire a fornirvi risposte e consigli riguardanti i problemi di salute dei vostri amici animali. E magari sarà anche un modo con il quale voi aiuterete noi a sostenerci. <br /><br />
-                                    Il consulto <strong> non potrà in alcun modo sostituire </strong> una visita veterinaria effettuata in presenza dell'animale. <br /><br /> Verranno forniti pareri e consigli relativi alle domande che vorrete farci e che ci auguriamo vi aiuteranno a comprendere e a gestire al meglio i problemi sanitari dei vostri amici a quattro zampe ( o con le ali, o pinne o altro).</p>
-                            {/* </Slide> */}
+                        <div className={isVisible ? "consultText": "hideAnimation"}>
+                            <h1>Il Consulto</h1>
+                            <p>
+                                Abbiamo creato questo servizio per<strong> potervi offrire delle consulenze online </strong> in una maniera per noi sostenibile. <br /> <br />
+                                Ci auguriamo in questo modo di riuscire a fornirvi risposte e consigli riguardanti i problemi di salute dei vostri amici animali. E magari sarà anche un modo con il quale voi aiuterete noi a sostenerci. <br /><br />
+                                Il consulto <strong> non potrà in alcun modo sostituire </strong> una visita veterinaria effettuata in presenza dell'animale. <br /><br /> Verranno forniti pareri e consigli relativi alle domande che vorrete farci e che ci auguriamo vi aiuteranno a comprendere e a gestire al meglio i problemi sanitari dei vostri amici a quattro zampe ( o con le ali, o pinne o altro).</p>
                         </div>
                         <div className="cardHome" >
                             <div className="cardHome__image-container">
@@ -82,12 +78,10 @@ const Home = () => {
                             </div>
                         </div>
 
-                        <div className="consultText">
-                            {/* <JackInTheBox> */}
-                                <h1>Prenota Un'Appuntamento</h1>
-                                <p>
-                                    Come abbiamo sottolineato sopra, il consulto non potrà in alcun modo sostituire una visita veterinaria effettuata in presenza dell'animale. Se hai bisogno di portarci il tuo animale per una visita in sede dovrai semplicemente richiedere un'appuntamento. <br /> <br /> Controlla la disponibilità e <strong> richiedi una visita privata </strong> per il tuo animale! </p>
-                            {/* </JackInTheBox> */}
+                        <div className={isAlsoVisible ? "consultText" : "hideAnimation"}>
+                            <h1>Prenota Un'Appuntamento</h1>
+                            <p>
+                                Come abbiamo sottolineato sopra, il consulto non potrà in alcun modo sostituire una visita veterinaria effettuata in presenza dell'animale. Se hai bisogno di portarci il tuo animale per una visita in sede dovrai semplicemente richiedere un'appuntamento. <br /> <br /> Controlla la disponibilità e <strong> richiedi una visita privata </strong> per il tuo animale! </p>
                         </div>
                     </div>
                 </div>
@@ -110,7 +104,7 @@ const Home = () => {
                         </svg>
                         <div className={isAlsoVisible ? "cardHome__content" : "hideAnimation"} ref={mySecondRef}>
                             <h1 className="cardHome__title">Consulti Online</h1>
-                            <p>Controlla tutti i consulti online dei nostri clienti. <br/> Ricorda di rispondere entro 48h </p>
+                            <p>Controlla tutti i consulti online dei nostri clienti. <br /> Ricorda di rispondere entro 48h </p>
                             <button className="button" onClick={() => navigate('/vetConsult')} >Consulti</button>
                         </div>
                     </div>
