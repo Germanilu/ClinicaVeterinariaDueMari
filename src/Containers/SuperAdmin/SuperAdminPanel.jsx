@@ -26,7 +26,6 @@ const SuperAdminPanel = () => {
     const [callFunction, setCallFunction] = useState()
     const [msgError, setMsgError] = useState()
 
-
     const updateVetData = (e) => {
         setVetData({ ...vetData, [e.target.name]: e.target.value })
     }
@@ -92,10 +91,8 @@ const SuperAdminPanel = () => {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
             const attempt = await axios.delete(`https://bbdd-cv2.herokuapp.com/api/vet/${id}`, config)
-            console.log(attempt)
             setMsgVetDeleted("Veterinario Eliminato!")
         } catch (error) {
-            console.log(error)
             setMsgVetDeleted("Sembra ci sia stato un'errore...")
         }
     }
@@ -172,26 +169,25 @@ const SuperAdminPanel = () => {
                 <div className="containerResearch">
                     <h1>Cosa vuoi Cercare?</h1>
                     <div className="researchInputContainer">
-                        <div className="allVetInput">
+                        <div className="researchResult">
                             <h2>Ricerca tutti i Veterinari</h2>
                             <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("allVets") }}>Cerca</div>
                         </div>
-                        <div className="allUserInput">
+                        <div className="researchResult">
                             <h2>Ricerca tutti gli Utenti</h2>
                             <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("allUsers") }}>Cerca</div>
                         </div>
-                        <div className="allPetsd">
+                        <div className="researchResult">
                             <h2>RicercaTutti gli Animali</h2>
                             <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("allPets") }}>Cerca</div>
                         </div>
-                        <div className="allConsult">
+                        <div className="researchResult">
                             <h2>Ricerca Tutte le consulte</h2>
                             <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("allConsults") }}>Cerca</div>
                         </div>
                     </div>
 
                     <div className="containerResearchResult">
-                        Mostrare qui le consulte fatte
                         {showResearch.length > 0 && (
                             <div className="contGrid">
                                 {showResearch.map(element => {
@@ -201,11 +197,11 @@ const SuperAdminPanel = () => {
                                             <div className="contElement" key={element.id}>
 
                                                 <div>
-                                                    <p>ID: {element._id}</p>
-                                                    <p>Nome: {element.name}</p>
-                                                    <p>Cognome: {element.surname}</p>
-                                                    <p>Specializzazione: {element.specialization}</p>
-                                                    <p>Email: {element.email}</p>
+                                                    <p><strong>ID:</strong> {element._id}</p>
+                                                    <p><strong>Nome:</strong>  {element.name}</p>
+                                                    <p><strong>Cognome:</strong> {element.surname}</p>
+                                                    <p><strong>Specializzazione:</strong> {element.specialization}</p>
+                                                    <p><strong>Email:</strong> {element.email}</p>
                                                 </div>
                                             </div>
                                         )
@@ -213,13 +209,12 @@ const SuperAdminPanel = () => {
                                         return (
                                             <div className="contElement" key={element.id}>
 
-                                                <p>ID: {element._id}</p>
-                                                <p>Nome: {element.name}</p>
-                                                <p>Cognome: {element.surname}</p>
-                                                <p>Telefono: {element.mobile}</p>
-                                                <p>Indirizzo: {element.address} {element.city}</p>
-                                                <p>Telefono: {element.mobile}</p>
-                                                <p>Email: {element.email}</p>
+                                                <p><strong>ID:</strong>  {element._id}</p>
+                                                <p><strong>Nome:</strong>  {element.name}</p>
+                                                <p><strong>Cognome:</strong> {element.surname}</p>
+                                                <p><strong>Telefono:</strong> {element.mobile}</p>
+                                                <p><strong>Indirizzo:</strong> {element.address} {element.city}</p>
+                                                <p><strong>Email:</strong> {element.email}</p>
 
                                             </div>
                                         )
@@ -228,13 +223,13 @@ const SuperAdminPanel = () => {
                                         return (
                                             <div className="contElement" key={element.id}>
 
-                                                <p>ID: {element._id}</p>
-                                                <p>Nome: {element.name}</p>
-                                                <p>Età: {element.age}</p>
-                                                <p>Specie: {element.breed}</p>
-                                                <p>Razza: {element.type} </p>
-                                                <p>Peso: {element.weight}</p>
-                                                <p>Malattie Croniche: {element.diseases}</p>
+                                                <p><strong>ID:</strong>  {element._id}</p>
+                                                <p><strong>Nome:</strong>  {element.name}</p>
+                                                <p><strong>Età:</strong>  {element.age}</p>
+                                                <p><strong>Specie:</strong>  {element.breed}</p>
+                                                <p><strong>Razza:</strong>  {element.type} </p>
+                                                <p><strong>Peso:</strong>  {element.weight}</p>
+                                                <p> <strong>Malattie Croniche: </strong> {element.diseases}</p>
 
                                             </div>
                                         )
@@ -242,13 +237,13 @@ const SuperAdminPanel = () => {
                                         return (
                                             <div className="contElement" key={element.id}>
 
-                                                <p>ID: {element._id}</p>
-                                                <p>PetID: {element.petId}</p>
-                                                <p>UserID: {element.userId}</p>
-                                                <p>Nome Utente {element.userName} {element.userSurname}</p>
-                                                <p>Data: {element.date}</p>
-                                                <p>Messaggio Utente: {element.userMessage}</p>
-                                                <p>Risposta: {element.vetMessage} </p>
+                                                <p><strong>ID:</strong>{element._id}</p>
+                                                <p><strong>PetID:</strong> {element.petId}</p>
+                                                <p><strong>UserID:</strong> {element.userId}</p>
+                                                <p><strong>Nome Utente:</strong> {element.userName} {element.userSurname}</p>
+                                                <p><strong>Data:</strong> {element.date}</p>
+                                                <p><strong>Messaggio Utente</strong> {element.userMessage}</p>
+                                                <p><strong>Risposta:</strong> {element.vetMessage} </p>
                                             </div>
                                         )
                                     }
@@ -262,67 +257,62 @@ const SuperAdminPanel = () => {
                     {/* Research by ID */}
                     <h1>Ricerca tramite ID</h1>
                     <div className="containerSearchId">
-                        <div className="vetById">
+                        <div className="researchResult">
                             <h2>Ricerca Veterinario Tramite ID</h2>
                             <input className='inputShort' type="text" name='text' title='text' onChange={onChangeHandler} placeholder="Inserire ID Veterinario" />
                             <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("vetId") }}>Cerca</div>
                         </div>
-                        <div className="userById">
+                        <div className="researchResult">
                             <h2>Ricerca Utente Tramite ID</h2>
                             <input className='inputShort' type="text" name='text' title='text' onChange={onChangeHandler} placeholder="Inserire ID Utente" />
                             <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("userId") }}>Cerca</div>
                         </div>
-                        <div className="petById">
+                        <div className="researchResult">
                             <h2>Ricerca Animale Tramite ID</h2>
                             <input className='inputShort' type="text" name='text' title='text' onChange={onChangeHandler} placeholder="Inserire ID Animale" />
                             <div className="button" onClick={() => { axiosRequestFunction(); setCallFunction("petId") }}>Cerca</div>
                         </div>
                     </div>
                     <div className="containerResearchByID">
-
                         {showResearchById !== undefined && (
                             <div>
                                 {showResearchById.role === "vet" && (
                                     <div className="contElement">
                                         <div>
-                                            <p>ID: {showResearchById._id}</p>
-                                            <p>Nome: {showResearchById.name}</p>
-                                            <p>Cognome: {showResearchById.surname}</p>
-                                            <p>Specializzazione: {showResearchById.specialization}</p>
-                                            <p>Email: {showResearchById.email}</p>
+                                            <p><strong>ID:</strong> {showResearchById._id}</p>
+                                            <p><strong>Nome:</strong>{showResearchById.name}</p>
+                                            <p><strong>Cognome:</strong> {showResearchById.surname}</p>
+                                            <p><strong>Specializzazione:</strong> {showResearchById.specialization}</p>
+                                            <p><strong>Email:</strong> {showResearchById.email}</p>
                                         </div>
                                     </div>
                                 )}
 
                                 {showResearchById.role === "user" && (
                                     <div className="contElement">
-
-                                        <p>ID: {showResearchById._id}</p>
-                                        <p>Nome: {showResearchById.name}</p>
-                                        <p>Cognome: {showResearchById.surname}</p>
-                                        <p>Telefono: {showResearchById.mobile}</p>
-                                        <p>Indirizzo: {showResearchById.address} {showResearchById.city}</p>
-                                        <p>Telefono: {showResearchById.mobile}</p>
-                                        <p>Email: {showResearchById.email}</p>
+                                        <p><strong>ID:</strong> {showResearchById._id}</p>
+                                        <p><strong>Nome:</strong> {showResearchById.name}</p>
+                                        <p><strong>Cognome:</strong> {showResearchById.surname}</p>
+                                        <p><strong>Telefono:</strong> {showResearchById.mobile}</p>
+                                        <p><strong>Indirizzo:</strong> {showResearchById.address} {showResearchById.city}</p>
+                                        <p><strong>Email:</strong> {showResearchById.email}</p>
 
                                     </div>
                                 )}
 
                                 {showResearchById.age !== undefined && (
                                     <div className="contElement" >
-                                        <p>ID: {showResearchById._id}</p>
-                                        <p>Nome: {showResearchById.name}</p>
-                                        <p>Età: {showResearchById.age}</p>
-                                        <p>Specie: {showResearchById.breed}</p>
-                                        <p>Razza: {showResearchById.type} </p>
-                                        <p>Peso: {showResearchById.weight}</p>
-                                        <p>Malattie Croniche: {showResearchById.diseases}</p>
-
+                                        <p><strong>ID:</strong> {showResearchById._id}</p>
+                                        <p><strong>Nome:</strong> {showResearchById.name}</p>
+                                        <p><strong>Età:</strong> {showResearchById.age}</p>
+                                        <p><strong>Specie:</strong> {showResearchById.breed}</p>
+                                        <p><strong>Razza:</strong> {showResearchById.type} </p>
+                                        <p><strong>Peso:</strong> {showResearchById.weight}</p>
+                                        <p><strong>Malattie Croniche:</strong> {showResearchById.diseases}</p>
                                     </div>
                                 )}
                             </div>
                         )}
-
                     </div>
                 </div>
             </div>
