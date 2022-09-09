@@ -28,7 +28,6 @@
     height: 60%;
     @include flex();
     justify-content: space-around;
-    // border: 1px solid black;
 }
 .petPict{
     width: 20%;
@@ -51,4 +50,26 @@
     background: none;
     padding-bottom: 5px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+}
+
+@media (max-width: 426px){
+
+    .containerRegisterPet{
+        width: 90%; //
+        &>h1{
+            font-size: 19px; //
+        }
+    }
+    .containerRegisterPetInput{
+        width: 90%; //
+    }
+
+}
+
+@media (max-width: 376px){
+
+  .registerPetDesign>p{
+    text-align: center;
+  }
+
 }
