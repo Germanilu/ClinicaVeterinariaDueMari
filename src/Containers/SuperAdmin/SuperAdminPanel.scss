@@ -118,4 +118,57 @@
     margin: 1em 0em;
 }
 
+//Responsive Design
+
+@media (max-width: 768px){
+
+    .contGrid{
+        grid-template-columns: repeat(2, auto);
+    }
+}
+
+@media (max-width: 426px){
+
+    .vetContainer{
+        height: 50em; 
+        flex-direction: column; 
+    }
+
+    .registerVet{
+        width: 90%; 
+        border-bottom: 1px solid black; 
+        &>h1{
+            font-size: 20px; 
+        }
+    }
+
+    .inputShort{
+        width: 60%; 
+    }
+
+    .deleteVet{
+        width: 90%; 
+        &>h1{
+            font-size: 20px; 
+            margin-bottom: 1em; 
+        }
+    }
+
+    .researchResult>h2{
+        font-size: 15px; 
+        text-align: center; 
+    }
+
+    .contGrid{
+        grid-template-columns: repeat(1, auto);
+    }
+
+    .containerSearchId{
+        height: 30em; 
+        grid-template-columns: repeat(1, auto);
+    }
+}
+
+
+
 
