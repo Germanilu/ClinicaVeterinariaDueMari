@@ -65,8 +65,8 @@ const Header = () => {
                 <div className="logoHeader" onClick={() => move('/')}><img src={require('../../img/logoClinicaNoBG.png')} alt="Logo Duemari" className='logoHeaderImg' /></div>
                 <i className='hamburguerMenu' onClick={() => setOpenMenu(!openMenu) }><Hamburger/> </i>
                 <div className={openMenu? "containerMenuResp": "containerMenu"}>
-                    <div className="headerButton" onClick={() =>{ move('/consult'); setOpenMenu(false)}}>Consulto Online</div>
-                    <div className="headerButton" onClick={() =>{ move('/reserve'); setOpenMenu(false)} }>Richiedi Appuntamento</div>
+                    <div className="headerButton" onClick={() =>{ move('/consult'); setOpenMenu(false); setShow(false)}}>Consulto Online</div>
+                    <div className="headerButton" onClick={() =>{ move('/reserve'); setOpenMenu(false); setShow(false)} }>Richiedi Appuntamento</div>
                     <div className="headerButton" onClick={() => setShow(!show)}>Profilo</div>
                     <div className="headerButton" onClick={() => dispatch(logOut())}>Logout</div>
                 </div>
