@@ -73,6 +73,7 @@ const RegisterPet = () => {
                         <div className="inputReg">
                             <p className='inputParReg'>Specie</p>
                             <select className='selectNewPet' name="type" onChange={updatePetData}>
+                                <option value="default">Seleziona specie...</option>
                                 <option value="Cane">Cane</option>
                                 <option value="Gatto">Gatto</option>
                                 <option value="Coniglio">Coniglio</option>
