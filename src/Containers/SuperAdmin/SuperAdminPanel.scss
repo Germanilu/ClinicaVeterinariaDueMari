@@ -1,9 +1,9 @@
+@import '../../Global.scss';
+
 .superAdminDesign{
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
     flex-direction: column;
 }
 
@@ -21,17 +21,13 @@
     width: 100%;
     height: 30em;
     box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
 }
 
 .registerVet{
     width: 50%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
     flex-direction: column;
     gap: 1em;
     &:hover{
@@ -46,9 +42,7 @@
 .deleteVet{
     width: 50%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
     flex-direction: column;
     &:hover{
         box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.75);
@@ -61,9 +55,7 @@
     width: 100%;
     height: 100%;
     box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
     flex-direction: column;
 }
 
@@ -79,9 +71,7 @@
 .researchResult{
     width: 100%;
     box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
     flex-direction: column;
     &:hover{
         box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.75);
@@ -91,9 +81,7 @@
 .containerResearchResult{
     width: 100%;
     height: max-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
     flex-direction: column;
     margin-top: 2em;
 }
@@ -126,9 +114,7 @@
 .containerResearchByID{
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include flex();
     margin: 1em 0em;
 }
 
