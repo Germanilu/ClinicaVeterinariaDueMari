@@ -10,7 +10,7 @@
 
 section {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-color: rgb(175, 240, 229);
     @include flex();
     flex-direction: column;
@@ -119,3 +119,4 @@ section {
     text-decoration: underline;
     cursor: pointer;
 }
+

@@ -162,3 +162,30 @@ input {
     @include flex();
     justify-content: space-around;
 }
+
+//Responsive Design
+
+@media (max-width: 769px) {
+    .profileContainer {
+        width: 90%;
+    }
+
+    .profilePetContainer {
+        width: 90%;
+    }
+}
+
+@media (max-width: 426px) {
+
+    .userInfo {
+        width: 70%;
+    }
+
+    .firstSectionPet {
+        flex-direction: column;
+    }
+
+    .actualProfilePet {
+        width: 85%;
+    }
+}
