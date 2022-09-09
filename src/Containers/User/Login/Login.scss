@@ -7,6 +7,7 @@
     justify-content: left;
     background-color: rgba(65, 218, 193, 0.137); 
     color:#3A4A59;
+   
 }
 
 .containerLogin{
@@ -16,6 +17,7 @@
     @include flex();
     box-shadow: 10px 10px 10px 0px rgba(7, 7, 7, 0.452);
     background-color: transparent;
+    
 }
 
 .containerImg{
@@ -121,3 +123,55 @@ input{
 .backCard{
     transform: rotateY(180deg);
 }
+
+
+//Responsive Design
+@media (max-width: 768px){
+    .containerLogin{
+        width: 85%;
+        margin-left: 1em;
+    }
+}
+
+@media (max-width: 426px){
+    .containerLogin{
+        width: 100%;
+        margin-left: 0em;
+        height: 100%;
+        margin-bottom: 1em
+    }
+
+    .frontCard, .backCard{
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .containerImg{
+        width: 90%; 
+    }
+
+    .loginDesign{
+        height: 170vh; 
+    }
+
+    .containerImg > p {
+        margin-top: 0.5em; 
+    }
+
+    .containerDataLogin{
+        width: 90%; 
+        padding-bottom: 1em; 
+    }
+}
+
+@media (max-width: 321px){
+    .containerImg>h2{
+        font-size: 18px;
+    }
+
+    .containerRegister>p{
+        font-size: 14px;
+    }
+
+}
+

@@ -105,3 +105,30 @@ input{
     @include flex();
     flex-direction: column;
 }
+
+//Responsive Design
+@media (max-width: 426px){
+    .containerReg{
+        height: 100%; 
+    }
+
+    .containerImgReg{
+        width: 90%; 
+        gap: 1em; 
+    }
+
+    .containerDataRegister{
+        width: 90%; 
+        height: 90%; 
+    }
+}
+
+@media (max-width: 321px){
+    .containerImgReg>h2{
+        font-size: 18px;
+    }
+
+    .inputsContainerReg{
+        margin-top: 2em;
+    }
+}
