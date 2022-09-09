@@ -96,13 +96,13 @@ const Home = () => {
                 <div className="containerCardsVet">
                     <div className="cardHome" >
                         <div className="cardHome__image-container">
-                            <img className={isAlsoVisible ? "cardHome__image" : "hideAnimation"} ref={mySecondRef} src={require("../../img/perro1.jpg")} alt="" />
+                            <img className={isVisible ? "cardHome__image" : "hideAnimation"} ref={myRef} src={require("../../img/perro1.jpg")} alt="" />
                         </div>
                         <svg className="cardHome__svg" viewBox="0 0 800 500">
                             <path d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400 L 800 500 L 0 500" stroke="transparent" fill="#92f3e3" />
-                            <path className={isAlsoVisible ? "cardHome__line" : "hideAnimation"} ref={mySecondRef} d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" strokeWidth={10} fill="transparent" />
+                            <path className={isVisible ? "cardHome__line" : "hideAnimation"} ref={myRef} d="M 0 100 Q 50 200 100 250 Q 250 400 350 300 C 400 250 550 150 650 300 Q 750 450 800 400" stroke="pink" strokeWidth={10} fill="transparent" />
                         </svg>
-                        <div className={isAlsoVisible ? "cardHome__content" : "hideAnimation"} ref={mySecondRef}>
+                        <div className={isVisible ? "cardHome__content" : "hideAnimation"} ref={myRef}>
                             <h1 className="cardHome__title">Consulti Online</h1>
                             <p>Controlla tutti i consulti online dei nostri clienti. <br /> Ricorda di rispondere entro 48h </p>
                             <button className="button" onClick={() => navigate('/vetConsult')} >Consulti</button>

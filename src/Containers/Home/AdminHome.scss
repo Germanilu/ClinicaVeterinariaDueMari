@@ -16,6 +16,20 @@
     gap: 10em;
 }
 
+@media (max-width: 768px){
+
+    .vetHomeDesign{
+        height: 100%;
+    }
+    .containerCardsVet{
+        width: 90%;
+        height: 100%;
+        @include flex();
+        flex-direction: column;
+        gap: 2em;
+        margin-bottom: 5em;
+    }
+}
 
 
 
