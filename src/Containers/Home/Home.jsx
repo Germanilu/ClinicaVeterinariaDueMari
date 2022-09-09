@@ -36,7 +36,7 @@ const Home = () => {
                 </div>
                 {/* Consult Section */}
                 <div className="secondSection">
-                    <div className="containerSecondSection">
+                    <div className="containerSecondSection columnReverse">
                         <div className={isVisible ? "consultText": "hideAnimation"}>
                             <h1>Il Consulto</h1>
                             <p>
