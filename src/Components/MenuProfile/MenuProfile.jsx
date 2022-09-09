@@ -3,7 +3,7 @@ import './MenuProfile.scss'
 
 import { useNavigate } from 'react-router-dom';
 
-const MenuProfile = ({ show, setShow }) => {
+const MenuProfile = ({ setShow,  setOpenMenu }) => {
 
     const navigate = useNavigate()
 
@@ -11,6 +11,7 @@ const MenuProfile = ({ show, setShow }) => {
     const move = (i) => {
         navigate(i)
         setShow(false)
+        setOpenMenu(false)
     }
     return (
         <div className="menuProfileDesign">
