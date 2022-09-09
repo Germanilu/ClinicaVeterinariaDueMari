@@ -95,3 +95,32 @@
     font-size: 15px;
     font-weight: 600;
 }
+
+//Responsive Design
+@media (max-width:769px){
+
+    .unreplyConsultContainer,
+    .replyConsultContainer {
+        width: 95%; 
+    }
+
+    .consultBoxHeader {
+        gap: 2em; 
+        font-size: 12px; 
+    }
+}
+
+@media (max-width:426px){
+
+    .consultBoxHeader {
+        height: 4.5em; 
+    }
+    .replyTextArea{
+        width: 90%;
+    }
+
+    .containerConsultReply{
+        width: 90%;
+    }
+}
+
