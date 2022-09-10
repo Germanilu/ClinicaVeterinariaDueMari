@@ -67,7 +67,6 @@ export const updateUser = (credentials,userProfile) => async(dispatch) => {
             headers: {Authorization: `Bearer ${credentials.token}`}
         };
 
-
         const attempt = await axios.put(`https://bbdd-cv2.herokuapp.com/api/users/${credentials.user_id}`, body, config)
         console.log(attempt)
 

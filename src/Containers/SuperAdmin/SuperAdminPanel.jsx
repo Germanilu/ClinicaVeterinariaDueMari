@@ -121,6 +121,7 @@ const SuperAdminPanel = () => {
                 case 'allConsults':
                     const consults = await axios.get("https://bbdd-cv2.herokuapp.com/api/allConsults", config)
                     setShowResearch(consults.data.data);
+                    break;
                 case 'vetId':
                     const vetId = await axios.get(`https://bbdd-cv2.herokuapp.com/api/vet/${id}`, config)
                     setShowResearchById(vetId.data.data);
@@ -131,7 +132,10 @@ const SuperAdminPanel = () => {
                     break;
                 case 'petId':
                     const petId = await axios.get(`https://bbdd-cv2.herokuapp.com/api/pets${id}`, config)
-                    setShowResearchById(petId.data.data)
+                    setShowResearchById(petId.data.data);
+                    break;
+                    default:
+                        setShowResearchById("Non ho trovato nulla...")
             }
         } catch (error) {
             setShowResearchById("Sembra ci sia stato un'errore")
@@ -242,6 +246,10 @@ const SuperAdminPanel = () => {
                                                 <p><strong>Messaggio Utente</strong> {element.userMessage}</p>
                                                 <p><strong>Risposta:</strong> {element.vetMessage} </p>
                                             </div>
+                                        )
+                                    }else{
+                                        return(
+                                            <div className="contElement"></div>
                                         )
                                     }
                                 }

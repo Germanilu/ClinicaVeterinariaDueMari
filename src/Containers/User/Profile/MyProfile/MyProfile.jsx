@@ -76,11 +76,8 @@ const Profile = () => {
                 setMsgError("")
             }, 3000);
         } else {
-            setMsgError("Dati Aggiornati con successo")
-            setTimeout(() => {
-                dispatch(updateUser(credentials, userProfile))
-                window.location.reload();
-            }, 3000);
+            setMsgError("Dati Aggiornati con successo, verrà effettuato il logout")
+            dispatch(updateUser(credentials, userProfile))
         }
     };
 
@@ -204,7 +201,7 @@ const Profile = () => {
                                     <div className="button" onClick={() => deletePet(element._id)}>Elimina</div>
                                     <div className="button" onClick={() => editPetData(element._id)} >Modifica</div>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     ))}
                 </div>
