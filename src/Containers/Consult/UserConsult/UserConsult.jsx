@@ -69,12 +69,12 @@ const UserConsult = () => {
                 }, 2000);
             }
         } catch (error) {
-            if(message.petId == "default"){
+            if(message.petId === "default"){
                 setMsgError("Devi selezionare un'animale");
                 setTimeout(() => {
                     setMsgError("")
                 }, 5000);
-            }else if(message.userMessage == ""){
+            }else if(message.userMessage === ""){
                 setMsgError("Il messagio è vuoto, Scrivi qualcosa");
                 setTimeout(() => {
                     setMsgError("")

@@ -27,7 +27,7 @@ const Profile = () => {
         user_mobile: credentials.user_mobile,
         user_token: credentials.user_token,
         user_password: credentials.user_password,
-        user_password: ""
+        user_password2: ""
     });
 
     useEffect(() => {
@@ -65,7 +65,7 @@ const Profile = () => {
 
     //Function that dispatch userData to redux 
     const editDetails = () => {
-        if (userProfile.user_password == "") {
+        if (userProfile.user_password === "") {
             setMsgError("Devi inserire la password");
             setTimeout(() => {
                 setMsgError("")

@@ -23,7 +23,7 @@ const Home = () => {
     //var
     const navigate = useNavigate();
 
-    if (credentials?.user_role == "user" || credentials.token == "") {
+    if (credentials?.user_role === "user" || credentials.token === "") {
         return (
             <div className='homeDesign'>
                 <div className="firstSection">
@@ -89,7 +89,7 @@ const Home = () => {
             </div>
 
         )
-    } else if (credentials.user_role == "vet") {
+    } else if (credentials.user_role === "vet") {
         return (
             <div className="vetHomeDesign">
                 <h1>Ciao {credentials.user_name} !</h1>
@@ -126,7 +126,7 @@ const Home = () => {
                 </div>
             </div>
         )
-    } else if (credentials.user_role == "super_admin") {
+    } else if (credentials.user_role === "super_admin") {
         return (
             <SuperAdminPanel />
         )

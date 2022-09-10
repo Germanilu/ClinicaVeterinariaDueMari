@@ -36,7 +36,7 @@ const MyReserve = () => {
             };
 
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myBooking", config)
-            if(attempt.data.data.length == 0){
+            if(attempt.data.data.length === 0){
                 setMsg("Sembra che tu non abbia nessun appuntamento prenotato")
             }else{
                 setAllReserve(attempt.data.data)
