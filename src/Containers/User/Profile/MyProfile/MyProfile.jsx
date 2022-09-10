@@ -164,27 +164,27 @@ const Profile = () => {
                                 <div className="actualProfilePet">
                                     <div className="actualProfilePetContainer">
                                         <p>Nome: </p>
-                                        <input className='inputPet' type="text" name='pet_name' title='name' value={element.name} />
+                                        <input className='inputPet' type="text" name='pet_name' title='name' value={element.name} disabled/>
                                     </div>
                                     <div className="actualProfilePetContainer">
                                         <p>Specie: </p>
-                                        <input className='inputPet' type="text" name='pet_type' title='type' value={element.type} />
+                                        <input className='inputPet' type="text" name='pet_type' title='type' value={element.type} disabled />
                                     </div>
                                     <div className="actualProfilePetContainer">
                                         <p>Razza: </p>
-                                        <input className='inputPet' type="text" name='pet_age' title='age' value={element.age} />
+                                        <input className='inputPet' type="text" name='pet_age' title='age' value={element.breed} disabled />
                                     </div>
                                     <div className="actualProfilePetContainer">
                                         <p>Età: </p>
-                                        <input className='inputPet' type="text" name='pet_weight' title='weight' value={element.weight} />
+                                        <input className='inputPet' type="text" name='pet_weight' title='weight' value={element.age} disabled />
                                     </div>
                                     <div className="actualProfilePetContainer">
                                         <p>Peso: </p>
-                                        <input className='inputPet' type="text" name='pet_breed' title='breed' value={element.breed} />
+                                        <input className='inputPet' type="text" name='pet_breed' title='breed' value={element.weight} disabled />
                                     </div>
                                     <div className="actualProfilePetContainer">
                                         <p>Malattie Croniche: </p>
-                                        <input className='inputPet' type="text" name='pet_deseases' title='deseases' value={element.diseases} />
+                                        <input className='inputPet' type="text" name='pet_deseases' title='deseases' value={element.diseases} disabled />
                                     </div>
                                 </div>
 

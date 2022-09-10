@@ -54,8 +54,8 @@ const MyConsult = () => {
                     {allConsult.length > 0 && (
                         allConsult.map((element) => {
                             return (
-                                <div>
-                                    <div className="accordionItem" id={element._id}>
+                                <div key={element._id}>
+                                    <div className="accordionItem" id={element._id} >
                                         <a className="accordionLink" href={`#${element._id}`}>
                                             <div className="flexAccordionHeader">
                                                 <h3>Data Consulto: </h3>

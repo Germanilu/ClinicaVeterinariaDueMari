@@ -197,7 +197,7 @@ const SuperAdminPanel = () => {
                                 {showResearch.map(element => {
                                     if (element.role === "vet") {
                                         return (
-                                            <div className="contElement" key={element.id}>
+                                            <div className="contElement" key={element._id}>
                                                 <div>
                                                     <p><strong>ID:</strong> {element._id}</p>
                                                     <p><strong>Nome:</strong>  {element.name}</p>
@@ -209,7 +209,7 @@ const SuperAdminPanel = () => {
                                         )
                                     } else if ( element.mobile !== undefined) {
                                         return (
-                                            <div className="contElement" key={element.id}>
+                                            <div className="contElement" key={element._id}>
                                                 <p><strong>ID:</strong>  {element._id}</p>
                                                 <p><strong>Nome:</strong>  {element.name}</p>
                                                 <p><strong>Cognome:</strong> {element.surname}</p>
@@ -222,7 +222,7 @@ const SuperAdminPanel = () => {
 
                                     } else if (element.age !== undefined) {
                                         return (
-                                            <div className="contElement" key={element.id}>
+                                            <div className="contElement" key={element._id}>
 
                                                 <p><strong>ID:</strong>  {element._id}</p>
                                                 <p><strong>Nome:</strong>  {element.name}</p>
@@ -236,7 +236,7 @@ const SuperAdminPanel = () => {
                                         )
                                     } else if (element.userMessage !== "") {
                                         return (
-                                            <div className="contElement" key={element.id}>
+                                            <div className="contElement" key={element._id}>
 
                                                 <p><strong>ID:</strong>{element._id}</p>
                                                 <p><strong>PetID:</strong> {element.petId}</p>

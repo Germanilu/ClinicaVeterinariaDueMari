@@ -111,12 +111,12 @@ const UserConsult = () => {
                     <select name="petId"  onChange={updateMessage}> 
                         <option name='default' value="default">Seleziona un'Animale</option>
                         {pets.map(element => (
-                            <option key={element.id}  value={element._id} >{element.name}</option>
+                            <option key={element._id}  value={element._id} >{element.name}</option>
                         ))}
                     </select>
                     <div className="containerDataPet">
                         {infoChoosenPet !== undefined && 
-                        <div  className='containerDataPetdiv'>
+                        <div className='containerDataPetdiv'>
                             <div className="containerDataPetImg"><img src={infoChoosenPet.avatar} alt="" /></div>
                             <p> <strong> Nome: </strong>{infoChoosenPet.name}</p>
                             <p><strong>Specie: </strong>{infoChoosenPet.type}</p>   

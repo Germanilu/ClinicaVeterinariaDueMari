@@ -55,7 +55,7 @@ const MyReserve = () => {
             <div className="containerAppointment">
                 {allReserve.map((element) => {
                     return (
-                        <div className="containerMyReserve"><p><strong>Data:</strong>  {element.date},</p> <p> <strong>Orario:</strong> {element.hour}</p> </div>
+                        <div className="containerMyReserve" key={element._id}><p><strong>Data:</strong>  {element.date},</p> <p> <strong>Orario:</strong> {element.hour}</p> </div>
                     )
                 })}
             </div>

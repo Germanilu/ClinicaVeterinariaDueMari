@@ -15,7 +15,7 @@ const MenuProfile = ({ setShow,  setOpenMenu }) => {
     }
     return (
         <div className="menuProfileDesign">
-            <ul class="dropdown">
+            <ul className="dropdown">
                 <li><a onClick={() => move('/registerPet')} className='anim-1 aProfile'>Nuovo Animale</a></li>
                 <li><a onClick={() => move('/myReserve')}  className='anim-2 aProfile'>Appuntamenti</a></li>
                 <li><a  onClick={() => move('/myConsult')} className='anim-3 aProfile'>I miei consulti</a></li>
