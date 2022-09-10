@@ -1,20 +1,19 @@
 import './App.scss';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Header from './Components/Header/Header';
-import Footer from './Components/Footer/Footer'
-import Home from './Containers/Home/Home'
-import Login from './Containers/User/Login/Login'
+import Footer from './Components/Footer/Footer';
+import Home from './Containers/Home/Home';
+import Login from './Containers/User/Login/Login';
 import Register from './Containers/User/Register/Register';
 import UserConsult from './Containers/Consult/UserConsult/UserConsult';
-import VetConsult from './Containers/Consult/VetConsult/VetConsult'
+import VetConsult from './Containers/Consult/VetConsult/VetConsult';
 import UserReserve from './Containers/Reserve/UserReserve/UserReserve';
-import VetReserve from './Containers/Reserve/VetReserve/VetReserve'
+import VetReserve from './Containers/Reserve/VetReserve/VetReserve';
 import RegisterPet from './Containers/RegisterPet/RegisterPet';
 import Profile from './Containers/User/Profile/MyProfile/MyProfile';
 import MyReserve from './Containers/User/Profile/MyReserve/MyReserve';
 import MyConsult from './Containers/User/Profile/MyConsult/MyConsult';
-
-import SuperAdminPanel from './Containers/SuperAdmin/SuperAdminPanel'
+import SuperAdminPanel from './Containers/SuperAdmin/SuperAdminPanel';
 
 
 function App() {
@@ -34,8 +33,6 @@ function App() {
       <Route path= '/vetConsult' element= {<VetConsult/>}/>
       <Route path= '/vetReserve' element= {<VetReserve/>}/>
       <Route path= '/superAdminPanel' element= {<SuperAdminPanel/>}/>
-
-      
     </Routes>
     <Footer/>
     </BrowserRouter>
