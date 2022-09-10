@@ -191,11 +191,9 @@ const SuperAdminPanel = () => {
                         {showResearch.length > 0 && (
                             <div className="contGrid">
                                 {showResearch.map(element => {
-                                    console.log("Soy element", element)
                                     if (element.role === "vet") {
                                         return (
                                             <div className="contElement" key={element.id}>
-
                                                 <div>
                                                     <p><strong>ID:</strong> {element._id}</p>
                                                     <p><strong>Nome:</strong>  {element.name}</p>
@@ -205,10 +203,9 @@ const SuperAdminPanel = () => {
                                                 </div>
                                             </div>
                                         )
-                                    } else if (element.role === "user") {
+                                    } else if ( element.mobile !== undefined) {
                                         return (
                                             <div className="contElement" key={element.id}>
-
                                                 <p><strong>ID:</strong>  {element._id}</p>
                                                 <p><strong>Nome:</strong>  {element.name}</p>
                                                 <p><strong>Cognome:</strong> {element.surname}</p>
