@@ -11,7 +11,6 @@
     margin-left: 1.5em;
     margin-top: 1.5em;
     transition: 0.5s ease;
-
     &:hover {
         border-left: 2px solid rgb(175, 240, 229);
         padding-left: 1em;
@@ -45,7 +44,6 @@
 
 .anim-1{
     animation: oneByOne 1s forwards;
-    
 }
 .anim-2{
     animation: oneByOne 1s 0.1s forwards;
@@ -71,7 +69,6 @@
 
 //Responsive Design
 @media (max-width:769px){
-
     .menuProfileDesign {
         width: 22%;
         top: 5.5em;
@@ -90,7 +87,6 @@
         box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);   
         height: 14em;
     }
-
     .dropdown{
         padding-top: 1.5em;
     }
@@ -103,5 +99,4 @@
         font-size: 15px;
         font-weight: 400;
      }
-
 }

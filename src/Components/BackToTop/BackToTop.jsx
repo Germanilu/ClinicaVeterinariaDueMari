@@ -1,10 +1,10 @@
 import React from 'react';
-import './BackToTop.scss'
+import './BackToTop.scss';
 import { useEffect, useState } from 'react';
  
 const BackToTop = () => {
 
-    const [backToTop, setBackToTop] = useState(false)
+    const [backToTop, setBackToTop] = useState(false);
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -13,15 +13,15 @@ const BackToTop = () => {
             }else{
                 setBackToTop(false)
             }
-        })
-    },[])
+        });
+    },[]);
 
     const scrollUp = () => {
         window.scrollTo({
             top:0,
             behavior: "smooth"
-        })
-    }
+        });
+    };
 
      return (
          <div>

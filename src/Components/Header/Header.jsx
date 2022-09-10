@@ -1,5 +1,5 @@
-import React, { useEffect, useState }  from 'react';
-import './Header.scss'
+import React, { useState }  from 'react';
+import './Header.scss';
 import MenuProfile from '../MenuProfile/MenuProfile';
 
 import {useNavigate} from 'react-router-dom';

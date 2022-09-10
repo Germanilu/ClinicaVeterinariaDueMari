@@ -1,17 +1,17 @@
 import React from 'react';
-import './MenuProfile.scss'
+import './MenuProfile.scss';
 
 import { useNavigate } from 'react-router-dom';
 
 const MenuProfile = ({ setShow,  setOpenMenu }) => {
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     //This function is here to be able to navigate to section and also change the state of the MenuProfile Hook to be able to close it.
     const move = (i) => {
-        navigate(i)
-        setShow(false)
-        setOpenMenu(false)
+        navigate(i);
+        setShow(false);
+        setOpenMenu(false);
     }
     return (
         <div className="menuProfileDesign">
