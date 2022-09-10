@@ -44,7 +44,7 @@ This application is deployed in **Aws,** you can see the website here: [Clinica 
 
 **Super Admin:**
     Email: admin@admin.com
-    Passworod: 123456!
+    Password: 123456!
 
 
 # Some Images
