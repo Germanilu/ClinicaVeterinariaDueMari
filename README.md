@@ -16,7 +16,7 @@
 
 *If you prefer you can read this in* [Spanish](README-ESP.md)
 
-This project was made using React / Redux / Sass and aiming to a MongoDB Database. To check the back-end project you can click here : [DB CV2 Project](https://github.com/Germanilu/BBDD-CV2).
+This project was made using **React / Redux / Sass** and aiming to a **MongoDB** Database. **This is a Full Stack Web Application,** To check the back-end project you can click here : [DB CV2 Project](https://github.com/Germanilu/BBDD-CV2).
 
 # The Application
 

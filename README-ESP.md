@@ -16,7 +16,7 @@
 
 *Si lo prefieres pues leer esto en * [Inglés](README.md)
 
-Este proyecto está creado usando React / Redux / Sass y apuntando a una base de datos de MongoDb. Para poder revisar la BBDD del proyecto puedes hacer clic aquí: [DB CV2 Project](https://github.com/Germanilu/BBDD-CV2).
+Este proyecto está creado usando **React / Redux / Sass** y apuntando a una base de datos de **MongoDb.** Para poder revisar la BBDD del proyecto puedes hacer clic aquí: [DB CV2 Project](https://github.com/Germanilu/BBDD-CV2).
 
 
 # La App
