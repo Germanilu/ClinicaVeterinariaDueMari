@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './UserConsult.scss'
+import './UserConsult.scss';
 import { userData } from '../../User/userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -9,26 +9,26 @@ const UserConsult = () => {
 
     //Var
     const credentials = useSelector(userData);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     //hooks
-    const [pets, setPets] = useState([])
-    const [message,SetMessage] = useState({petId: '', userMessage: ''})
-    const [msgError,setMsgError] = useState()
-    const [infoChoosenPet, setInfoChoosenPet] = useState()
+    const [pets, setPets] = useState([]);
+    const [message,SetMessage] = useState({petId: '', userMessage: ''});
+    const [msgError,setMsgError] = useState();
+    const [infoChoosenPet, setInfoChoosenPet] = useState();
 
     //Trigger verifyPet and detect when message.petId change to be able to display pet data on box
     useEffect(() => {
         verifyPet()
         dataPet()
-    }, [message.petId])
+    }, [message.petId]);
 
 
     useEffect(() => {
         if (credentials.token === '') {
             navigate('/login')
         }
-    })
+    });
 
     //Check if user have pet register, otherwise will redirect to /registerPet
     const verifyPet = async () => {
@@ -38,23 +38,20 @@ const UserConsult = () => {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
 
-            const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myPets", config)
+            const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myPets", config);
             if (attempt.status === 200) {
                 if (attempt.data.data.length === 0) {
                     navigate('/registerPet')
                 }
                 setPets(attempt.data.data)
-                console.log(pets)
             }
         } catch (error) {
-            console.log(error)
         }
     }
 
     //Function to update the message of the consult
     const updateMessage = (e) => {
         SetMessage({ ...message, [e.target.name]: e.target.value})
-        console.log(message)
     }
 
     //Post new consult
@@ -83,7 +80,6 @@ const UserConsult = () => {
                     setMsgError("")
                 }, 5000);
             }
-            console.log(error)
         }
     }
 
@@ -95,7 +91,6 @@ const UserConsult = () => {
             };
 
             const attempt = await axios.get(`https://bbdd-cv2.herokuapp.com/api/pets${message.petId}`,config)
-            console.log(attempt)
             setInfoChoosenPet(attempt.data.data)
             
         } catch (error) {

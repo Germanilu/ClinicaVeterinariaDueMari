@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './MyConsult.scss'
+import './MyConsult.scss';
 import { userData } from '../../userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -12,21 +12,21 @@ const MyConsult = () => {
 
     //Var
     const credentials = useSelector(userData);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     //Hooks
-    const [allConsult, setAllConsult] = useState([])
+    const [allConsult, setAllConsult] = useState([]);
 
     useEffect(() => {
         consult()
-    }, [])
+    }, []);
 
 
     useEffect(() => {
         if (credentials.token === '') {
             navigate('/login')
         }
-    })
+    });
 
     const consult = async () => {
         try {
@@ -34,7 +34,6 @@ const MyConsult = () => {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myConsult", config)
-            console.log(attempt)
             setAllConsult(attempt.data.data)
 
         } catch (error) {

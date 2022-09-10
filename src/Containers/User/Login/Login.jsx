@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './Login.scss';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, userData } from '../userSlice';
 import Register from '../Register/Register';
@@ -11,30 +10,30 @@ const Login = () => {
     //Hooks
     const [credentials, setCredentials] = useState({ email: '', password: '' });
     const [msgError, setMsgError] = useState();
-    const [isClick, setIsClick] = useState(false)
+    const [isClick, setIsClick] = useState(false);
 
     //Var
     const dispatch = useDispatch();
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const token = useSelector(userData);
 
     useEffect(() => {
         
-    },[])
+    },[]);
 
     useEffect(() => {
         if(token.token !== ''){
             navigate('/')
         }
-    })
+    });
 
     const updateCredentials = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
-    }
+    };
 
     const click = () => {
         setIsClick(true)
-    }
+    };
 
     const login = () => {
         //Regular expression to validate email

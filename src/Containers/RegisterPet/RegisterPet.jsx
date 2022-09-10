@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './RegisterPet.scss'
+import './RegisterPet.scss';
 import { userData } from '../../Containers/User/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,7 +9,7 @@ import axios from 'axios';
 const RegisterPet = () => {
     //Var
     const credentials = useSelector(userData);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     //Hooks
     const [msgError, setMsgError] = useState();
@@ -24,17 +24,17 @@ const RegisterPet = () => {
 
     useEffect(() => {
 
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (credentials.token === "") {
             navigate('/')
         }
-    })
+    });
 
     //Functions
     const updatePetData = (e) => {
-        setPetData({ ...petData, [e.target.name]: e.target.value })
+        setPetData({ ...petData, [e.target.name]: e.target.value });
     }
 
     const registerPet = async () => {
@@ -43,7 +43,7 @@ const RegisterPet = () => {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
 
-            await axios.post("https://bbdd-cv2.herokuapp.com/api/pet/register", petData, config)
+            await axios.post("https://bbdd-cv2.herokuapp.com/api/pet/register", petData, config);
             setMsgError("Animale Registrato Correttamente!")
             setTimeout(() => {
                 navigate('/')

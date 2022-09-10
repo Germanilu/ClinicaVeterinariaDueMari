@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './MyProfile.scss'
+import './MyProfile.scss';
 import { updateUser, userData } from '../../userSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -9,14 +9,13 @@ import BackToTop from '../../../../Components/BackToTop/BackToTop';
 const Profile = () => {
     //var
     const credentials = useSelector(userData);
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     //hooks
-    const [pets, setPets] = useState([])
-    const [msgError, setMsgError] = useState()
-    const [petData, setPetData] = useState([])
-    console.log(petData)
+    const [pets, setPets] = useState([]);
+    const [msgError, setMsgError] = useState();
+    const [petData, setPetData] = useState([]);
 
     //To update userProfile with redux
     const [userProfile, setUserProfile] = useState({
@@ -29,17 +28,17 @@ const Profile = () => {
         user_token: credentials.user_token,
         user_password: credentials.user_password,
         user_password: ""
-    })
+    });
 
     useEffect(() => {
         myPet()
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (credentials.token === '') {
             navigate('/login')
         }
-    })
+    });
 
     //Retrive all pets by user ID
     const myPet = async () => {
@@ -49,8 +48,6 @@ const Profile = () => {
             };
 
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myPets", config)
-
-            console.log(attempt)
             setPets(attempt.data.data)
         } catch (error) {
         }
@@ -59,12 +56,12 @@ const Profile = () => {
     //To set hook userProfile with new Data
     const handlerInputs = (e) => {
         setUserProfile({ ...userProfile, [e.target.name]: e.target.value })
-    }
+    };
 
     //To set the hook for the Pet
     const handlerPetInputs = (e) => {
         setPetData({ ...petData, [e.target.name]: e.target.value })
-    }
+    };
 
     //Function that dispatch userData to redux 
     const editDetails = () => {
@@ -85,7 +82,7 @@ const Profile = () => {
                 window.location.reload();
             }, 3000);
         }
-    }
+    };
 
     //Function to edit pet data
     const editPetData = async (id) => {
@@ -94,12 +91,13 @@ const Profile = () => {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
             const attempt = await axios.put(`https://bbdd-cv2.herokuapp.com/api/pet${id}`, petData, config)
-            console.log(attempt)
-            window.location.reload();
+            if(attempt.status === 200){
+                window.location.reload();
+            }
         } catch (error) {
             console.log(error)
         }
-    }
+    };
 
     //Function to delete pet
     const deletePet = async (id) => {
@@ -109,11 +107,9 @@ const Profile = () => {
             };
 
             const attempt = await axios.delete(`https://bbdd-cv2.herokuapp.com/api/pet${id}`, config)
-            console.log(attempt)
             if(attempt.status === 200){
                 window.location.reload();
             }
-
         } catch (error) {
             console.log(error)
         }

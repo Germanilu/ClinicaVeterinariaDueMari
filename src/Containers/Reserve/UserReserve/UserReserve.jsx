@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import './UserReserve.scss'
+import './UserReserve.scss';
 import { userData } from '../../User/userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
 const UserReserve = () => {
 
     //Var
     const credentials = useSelector(userData);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     //Hooks
     const [date, onChange] = useState(new Date());
-    const [hour, setHour] = useState()
+    const [hour, setHour] = useState();
     const [msgError, setMsgError] = useState();
 
 
     useEffect(() => {
        
-    }, [])
+    }, []);
 
     useEffect(() => {
         if (credentials.token === '') {
             navigate('/login')
         }
-    })
+    });
 
     
     const reserve = async () => {
@@ -43,16 +42,12 @@ const UserReserve = () => {
                 hour: hour
             };
 
-            console.log(body)
-
             if (hour === "default") {
-
                 setMsgError("Devi selezionare un'orario")
                 return;
             }
 
             const attempt = await axios.post("https://bbdd-cv2.herokuapp.com/api/booking", body, config)
-            console.log(attempt)
             if (attempt.status === 200) {
                 setMsgError("Appuntamento Prenotato!")
             }
@@ -61,6 +56,7 @@ const UserReserve = () => {
         }
     }
 
+    //To update hour selected
     const updateHour = (e) => {
         setHour(e.target.value)
     }

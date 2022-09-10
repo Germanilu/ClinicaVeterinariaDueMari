@@ -53,21 +53,18 @@
 }
 
 @media (max-width: 426px){
-
     .containerRegisterPet{
-        width: 90%; //
+        width: 90%; 
         &>h1{
-            font-size: 19px; //
+            font-size: 19px; 
         }
     }
     .containerRegisterPetInput{
-        width: 90%; //
+        width: 90%; 
     }
-
 }
 
 @media (max-width: 376px){
-
   .registerPetDesign>p{
     text-align: center;
   }

@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import './VetReserve.scss'
-import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
-import format from 'date-fns/format'
+import React, { useEffect } from 'react';
+import './VetReserve.scss';
+//Calendar Imports
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
+import format from 'date-fns/format';
+import startOfWeek from 'date-fns/startOfWeek';
+import getDay from 'date-fns/getDay';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-import startOfWeek from 'date-fns/startOfWeek'
-import getDay from 'date-fns/getDay'
-import 'react-big-calendar/lib/css/react-big-calendar.css'
-
-
-
+//Redux
 import { useSelector } from 'react-redux';
 import { userData } from '../../../Containers/User/userSlice';
 import { useNavigate } from 'react-router-dom';
@@ -17,15 +16,14 @@ import axios from 'axios';
 
 let locales = {
     'it': require("date-fns/locale/it")
-}
+};
 
 const localizer = dateFnsLocalizer({
     format,
     startOfWeek,
     getDay,
     locales,
-    
-})
+});
 
 const VetReserve = () => {
 
@@ -36,20 +34,20 @@ const VetReserve = () => {
         title: '',
         start: '',
         end: ''
-    }]
+    }];
 
-    
+
 
     useEffect(() => {
         request()
-    }, [])
+    }, []);
 
 
     useEffect(() => {
         if (credentials.token === '') {
             navigate('/login')
         }
-    })
+    });
 
     const request = async () => {
         try {
@@ -62,7 +60,7 @@ const VetReserve = () => {
                 let rowDate = element.date + " " + element.hour
                 element.start = new Date(rowDate)
                 element.end = new Date(rowDate)
-                element.title= element.userName + " " + element.userSurname;
+                element.title = element.userName + " " + element.userSurname;
                 events.push(element)
             })
         } catch (error) {
@@ -72,7 +70,7 @@ const VetReserve = () => {
 
     return (
         <div className='vetReserveDesign'>
-            <Calendar localizer={localizer} events={events}  startAccessor="start" endAccessor="end" className='vetCalendar' />
+            <Calendar localizer={localizer} events={events} startAccessor="start" endAccessor="end" className='vetCalendar' />
         </div>
     )
 }

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './SuperAdminPanel.scss'
+import './SuperAdminPanel.scss';
 import { useSelector } from 'react-redux';
 import { userData } from '../../Containers/User/userSlice';
 import axios from 'axios';
@@ -17,20 +17,18 @@ const SuperAdminPanel = () => {
         email: '',
         password: '',
         password2: ''
-    })
+    });
 
-    
-
-    const [id, setId] = useState()
-    const [msgVetDeleted, setMsgVetDeleted] = useState()
-    const [showResearch, setShowResearch] = useState([])
-    const [showResearchById, setShowResearchById] = useState()
-    const [callFunction, setCallFunction] = useState()
-    const [msgError, setMsgError] = useState()
+    const [id, setId] = useState();
+    const [msgVetDeleted, setMsgVetDeleted] = useState();
+    const [showResearch, setShowResearch] = useState([]);
+    const [showResearchById, setShowResearchById] = useState();
+    const [callFunction, setCallFunction] = useState();
+    const [msgError, setMsgError] = useState();
 
     const updateVetData = (e) => {
         setVetData({ ...vetData, [e.target.name]: e.target.value })
-    }
+    };
 
     //Register new vet
     const vetRegister = async () => {
@@ -72,19 +70,18 @@ const SuperAdminPanel = () => {
             let config = {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
-            const attempt = await axios.post("https://bbdd-cv2.herokuapp.com/api/newVet", vetData, config)
+            const attempt = await axios.post("https://bbdd-cv2.herokuapp.com/api/newVet", vetData, config);
             setMsgError(attempt.data.message)
 
         } catch (error) {
             setMsgError(error.response.data.message)
         }
-    }
+    };
 
     //Use to set the hook  with the  ID 
     const onChangeHandler = (e) => {
         setId(e.target.value)
-        console.log(id)
-    }
+    };
 
     //Delete vet Function
     const deleteVet = async () => {
@@ -93,7 +90,9 @@ const SuperAdminPanel = () => {
                 headers: { Authorization: `Bearer ${credentials.token}` }
             };
             const attempt = await axios.delete(`https://bbdd-cv2.herokuapp.com/api/vet/${id}`, config)
-            setMsgVetDeleted("Veterinario Eliminato!")
+            if (attempt.status === 200) {
+                setMsgVetDeleted("Veterinario Eliminato!")
+            }
         } catch (error) {
             setMsgVetDeleted("Sembra ci sia stato un'errore...")
         }
@@ -135,7 +134,6 @@ const SuperAdminPanel = () => {
                     setShowResearchById(petId.data.data)
             }
         } catch (error) {
-            console.log(error)
             setShowResearchById("Sembra ci sia stato un'errore")
         }
     }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './VetConsult.scss'
+import './VetConsult.scss';
 import { userData } from '../../User/userSlice';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -10,28 +10,28 @@ const VetConsult = () => {
 
     //Var
     const credentials = useSelector(userData);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     //hooks
-    const [unreplyConsult, setUnreplyConsult] = useState([])
-    const [replyConsult, setReplyConsult] = useState([])
-    const [show, setShow] = useState()
-    const [replyBox, setReplyBox] = useState()
-    const [reply, setReply] = useState("")
-    const [msg, setMsg] = useState()
+    const [unreplyConsult, setUnreplyConsult] = useState([]);
+    const [replyConsult, setReplyConsult] = useState([]);
+    const [show, setShow] = useState();
+    const [replyBox, setReplyBox] = useState();
+    const [reply, setReply] = useState("");
+    const [msg, setMsg] = useState();
 
 
     useEffect(() => {
         verifyUnreplyConsult()
         verifyReplyConsult()
-    }, [])
+    }, []);
 
 
     useEffect(() => {
         if (credentials.token === '') {
             navigate('/login')
         }
-    })
+    });
 
     //Verify all the existing unreply consult on DB
     const verifyUnreplyConsult = async () => {
@@ -83,18 +83,18 @@ const VetConsult = () => {
 
     //Receive idConsult as parameter and change the state of the hook 
     const isClick = (id) => {
-        show === "" ? setShow(id) : setShow("")
-    }
+        show === "" ? setShow(id) : setShow("");
+    };
 
     const isReply = (id) => {
-        replyBox === "" ? setReplyBox(id) : setReplyBox("")
-    }
+        replyBox === "" ? setReplyBox(id) : setReplyBox("");
+    };
 
 
     //Function to update the reply of the consult
     const updateMessage = (e) => {
-        setReply(e.currentTarget.value)
-    }
+        setReply(e.currentTarget.value);
+    };
 
 
     return (

@@ -15,16 +15,15 @@ const Register = () => {
         password: '',
         password2: '',
     });
-    const [msgError, setMsgError] = useState()
+    const [msgError, setMsgError] = useState();
     const [register, setRegister] = useState('');
 
     //Functions
     const updateUserData = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value })
-    }
+    };
 
     const userRegister = async () => {
-
         //Regular expression
         //Email
         if (!userData.email.match(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/)) {
@@ -158,5 +157,4 @@ const Register = () => {
         )
     }
 }
-
 export default Register;

@@ -63,7 +63,6 @@
 
 .hideConsultBox {
     display: none;
-
 }
 
 .containerConsultText {
@@ -72,7 +71,6 @@
     flex-direction: column;
     margin-bottom: 1em;
     gap: 1em;
-
 }
 
 .containerConsultReply {
@@ -98,7 +96,6 @@
 
 //Responsive Design
 @media (max-width:769px){
-
     .unreplyConsultContainer,
     .replyConsultContainer {
         width: 95%; 
@@ -111,7 +108,6 @@
 }
 
 @media (max-width:426px){
-
     .consultBoxHeader {
         height: 4.5em; 
     }

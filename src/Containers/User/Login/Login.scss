@@ -7,7 +7,6 @@
     justify-content: left;
     background-color: rgba(65, 218, 193, 0.137); 
     color:#3A4A59;
-   
 }
 
 .containerLogin{
@@ -17,7 +16,6 @@
     @include flex();
     box-shadow: 10px 10px 10px 0px rgba(7, 7, 7, 0.452);
     background-color: transparent;
-    
 }
 
 .containerImg{
@@ -124,7 +122,6 @@ input{
     transform: rotateY(180deg);
 }
 
-
 //Responsive Design
 @media (max-width: 768px){
     .containerLogin{
@@ -172,6 +169,5 @@ input{
     .containerRegister>p{
         font-size: 14px;
     }
-
 }
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './MyReserve.scss'
+import './MyReserve.scss';
 
 import { userData } from '../../userSlice';
 import { useSelector } from 'react-redux';
@@ -11,24 +11,23 @@ const MyReserve = () => {
 
     //var
     const credentials = useSelector(userData);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     //Hooks
 
     const [allReserve, setAllReserve] = useState([])
-    const [msg,setMsg] = useState()
+    const [msg,setMsg] = useState();
 
     useEffect(() => {
         reserve()
-    }, [])
+    }, []);
 
 
     useEffect(() => {
         if (credentials.token === '') {
             navigate('/login')
         }
-    })
-
+    });
 
     const reserve = async () => {
         try {
@@ -37,8 +36,6 @@ const MyReserve = () => {
             };
 
             const attempt = await axios.get("https://bbdd-cv2.herokuapp.com/api/myBooking", config)
-
-            console.log(attempt)
             if(attempt.data.data.length == 0){
                 setMsg("Sembra che tu non abbia nessun appuntamento prenotato")
             }else{
@@ -49,7 +46,7 @@ const MyReserve = () => {
             console.log(error)
             setMsg("Sembra che tu non abbia nessun appuntamento prenotato")
         }
-    }
+    };
 
     return (
         <div className='myReserveDesign'>
@@ -59,9 +56,7 @@ const MyReserve = () => {
                 {allReserve.map((element) => {
                     return (
                         <div className="containerMyReserve"><p><strong>Data:</strong>  {element.date},</p> <p> <strong>Orario:</strong> {element.hour}</p> </div>
-
                     )
-
                 })}
             </div>
         </div>

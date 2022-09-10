@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './Home.scss'
-import './AdminHome.scss'
+import React from 'react';
+import './Home.scss';
+import './AdminHome.scss';
 import { useNavigate } from 'react-router-dom';
 
 //Import to Enable intersectionObserver
@@ -17,11 +17,11 @@ const Home = () => {
     const credentials = useSelector(userData);
 
     // Ref create a reference to the DOM element & UseInView trigger element when in view
-    const { ref: myRef, inView: isVisible } = useInView()
-    const { ref: mySecondRef, inView: isAlsoVisible } = useInView()
+    const { ref: myRef, inView: isVisible } = useInView();
+    const { ref: mySecondRef, inView: isAlsoVisible } = useInView();
 
     //var
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     if (credentials?.user_role == "user" || credentials.token == "") {
         return (
@@ -131,6 +131,5 @@ const Home = () => {
             <SuperAdminPanel />
         )
     }
-
 }
 export default Home;
