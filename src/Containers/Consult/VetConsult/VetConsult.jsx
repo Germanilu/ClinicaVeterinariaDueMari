@@ -24,6 +24,7 @@ const VetConsult = () => {
     useEffect(() => {
         verifyUnreplyConsult()
         verifyReplyConsult()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -128,7 +129,7 @@ const VetConsult = () => {
                 })}
             </div>
             <h1>Storico Consulti</h1>
-            <div className="replyConsultContainer">
+            <div className="replyConsultContainer"> 
                 {replyConsult.map((element) => {
                     return (
                         <div className="consultBox" key={element._id} >

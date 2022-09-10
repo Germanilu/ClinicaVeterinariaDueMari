@@ -21,8 +21,8 @@ const UserConsult = () => {
     useEffect(() => {
         verifyPet()
         dataPet()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [message.petId]);
-
 
     useEffect(() => {
         if (credentials.token === '') {
@@ -99,7 +99,7 @@ const UserConsult = () => {
     }
 
     return (
-        <div className='consultDesign'>
+        <div className='consultDesign'> 
             <div className="consultContainerLeft">
                 <div className="consultLeftImg"><img src={require("../../../img/consult-man.jpg")} alt="" /></div>
                 <p>Scrivi la tua consulta, entro 48h ti risponderemo!</p>

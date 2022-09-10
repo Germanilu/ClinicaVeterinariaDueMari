@@ -19,6 +19,7 @@ const MyConsult = () => {
 
     useEffect(() => {
         consult()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 
@@ -50,7 +51,7 @@ const MyConsult = () => {
                 </p>
             )}
             <div className="container">
-                <div className="accordion">
+                <div className="accordion"> 
                     {allConsult.length > 0 && (
                         allConsult.map((element) => {
                             return (
