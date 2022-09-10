@@ -47,8 +47,9 @@
     font-weight: 600;
 }
 
-p {
+.containerText>p{
     font-weight: 400;
+    margin-top: 1em;
 }
 
 //Section 2
@@ -294,6 +295,5 @@ img {
     .containerInfo{
         width: 100%;
     }
-
 }
 

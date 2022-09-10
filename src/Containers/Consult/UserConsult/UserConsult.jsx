@@ -67,6 +67,9 @@ const UserConsult = () => {
             const attempt = await axios.post("https://bbdd-cv2.herokuapp.com/api/newConsult", message, config)
             if(attempt.status === 200){
                 setMsgError("Consulta Inviata con Successo! Ti risponderemo entro 48h")
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             }
         } catch (error) {
             if(message.petId == "default"){

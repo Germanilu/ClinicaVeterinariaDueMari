@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# Toc
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [Toc](#toc)
+- [Clinica Veterinaria DueMari](#clinica-veterinaria-duemari)
+- [The Application](#the-application)
+- [Some Images](#some-images)
+    - [Login](#login)
+    - [Home](#home)
+    - [User Consult](#user-consult)
+    - [Vet Calendar](#vet-calendar)
+  - [Author](#author)
+      - [Luciano Germani :it:](#luciano-germani-it)
 
-## Available Scripts
 
-In the project directory, you can run:
+#  Clinica Veterinaria DueMari
 
-### `npm start`
+*If you prefer you can read this in* [Spanish](README-ESP.md)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This project was made using React / Redux / Sass and aiming to a MongoDB Database. To check the back-end project you can click here : [DB CV2 Project](https://github.com/Germanilu/BBDD-CV2).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# The Application
 
-### `npm test`
+In this application, there are **3 roles**, User / Veterinary / Super Admin.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The user can complete a registration form and make the login to be able to register a pet and request an online consult or also, book an appointment with the clinic. 
+**A profile card is visible in the user header** where he can check his appointment / consults and also edit his profile information.
 
-### `npm run build`
+**The Veterinary** can login into the website and will be able to manage and reply to the consults made from the client and to check the appointment on a calendar.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**The Super Admin** will be able to register a new Veterinary and retrieve all the data regarding the users, pets, veterinary and also check all the consults. Apart from this, the Super Admin can reply to the user consults like a Veterinary.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This application is deployed in **Aws,** you can see the website here: [Clinica Veterinaria Duemari](https://master.d3ga5od2ophbfx.amplifyapp.com/).
 
-### `npm run eject`
+**If you would like to try the functionality of each role, here below you will find all the logins**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**User:**
+    Email: user@user.com
+    Password: 123456!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**Veterinary:**
+    Email: vet@vet.com
+    Password: 123456!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Super Admin:**
+    Email: admin@admin.com
+    Passworod: 123456!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+# Some Images
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Login
+![Login](./src/img/Login.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Home
+![Home](./src/img/Homepage.png)
 
-### Code Splitting
+### User Consult
+![User Consult](./src/img/consult.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Vet Calendar
 
-### Analyzing the Bundle Size
+![Vet Calendar](./src/img/Calendar.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Author 	
 
-### Making a Progressive Web App
+#### [Luciano Germani](https://github.com/Germanilu) :it:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---------------------
 
-### Advanced Configuration
+[:top:](#toc)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
