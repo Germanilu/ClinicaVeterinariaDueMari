@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './VetReserve.scss';
 //Calendar Imports
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
@@ -36,8 +36,8 @@ const VetReserve = () => {
         end: ''
     }];
 
-
-
+    const [calendarData, setCalendarData] = useState([])
+   
     useEffect(() => {
         request()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -64,6 +64,7 @@ const VetReserve = () => {
                 element.title = element.userName + " " + element.userSurname;
                 events.push(element)
             })
+            setCalendarData(events)
         } catch (error) {
             console.log(error)
         }
@@ -71,7 +72,7 @@ const VetReserve = () => {
 
     return (
         <div className='vetReserveDesign'>
-            <Calendar localizer={localizer} events={events} startAccessor="start" endAccessor="end" className='vetCalendar' />
+            <Calendar localizer={localizer} events={calendarData} startAccessor="start" endAccessor="end" className='vetCalendar' />
         </div>
     )
 }
